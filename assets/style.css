@@ -66,8 +66,8 @@ a:hover { text-decoration-color: var(--encre); }
 
 h1 {
   font-family: var(--titre); font-stretch: 66%; font-weight: 680;
-  font-size: clamp(2.5rem, 6.2vw, 5rem); line-height: 0.98; letter-spacing: -0.012em;
-  margin: 0 0 1.5rem; max-width: 14ch; text-wrap: balance;
+  font-size: clamp(2.3rem, 5.4vw, 4.4rem); line-height: 1; letter-spacing: -0.012em;
+  margin: 0 0 1.5rem; max-width: 17ch; text-wrap: balance;
 }
 .chapeau { max-width: 36rem; margin: 0 0 1rem; font-size: 1.2rem; line-height: 1.55; }
 .ouverture-liens { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; margin: 1.75rem 0 0; font-family: var(--titre); font-stretch: 88%; font-weight: 600; font-size: 1rem; }
@@ -210,3 +210,14 @@ summary { cursor: pointer; font-weight: 600; padding: 0.3rem 0; }
   .graphe { min-width: 660px; }
   figure.large figcaption, figure.large details { position: sticky; left: 0; max-width: calc(100vw - 2rem); }
 }
+
+/* Conclusion */
+.conclusion { min-width: 44rem; }
+.conclusion .col-a, .conclusion .col-b { padding-left: 0.9rem; border-top: 5px solid; width: 24%; }
+.conclusion .col-a { border-top-color: var(--serie-a); }
+.conclusion .col-b { border-top-color: var(--serie-b); }
+.conclusion td { padding-left: 0.9rem; }
+.conclusion td:nth-child(2) { background: color-mix(in srgb, var(--verre) 55%, transparent); }
+.conclusion td[colspan] { background: none; }
+.conclusion td:last-child { color: var(--encre-2); }
+.conclusion thead th:last-child { padding-left: 0.9rem; }

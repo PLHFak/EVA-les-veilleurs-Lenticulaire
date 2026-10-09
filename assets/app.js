@@ -123,7 +123,7 @@
     const pt = pic('terre', p1, -9), pm = pic('mer', p1, -9), pa = pic('A0', p2, 16), pb = pic('B0', p2, -9), pair = pic('air', p2, -9);
     el('g-jour').innerHTML = `
     <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Soleil reçu par chaque face et températures au fil de la journée du 20 juillet">
-      <text class="g-titre" x="${g - 40}" y="24">Quand l’air est le plus chaud, à 16 h 30, la vitre ne reçoit presque plus de soleil</text>
+      <text class="g-titre" x="${g - 40}" y="24">Calcul heure par heure : le maximum de soleil (11 h 30) précède le maximum de l’air (16 h 30)</text>
       <text class="g-txt" x="${g - 40}" y="52">Soleil reçu par face, en W/m²</text>
       ${cle(d - 196, 52, C.encre, 'face terre')}${cle(d - 96, 52, C.gris, 'face mer')}
       ${grille(p1, 200, '')}
@@ -193,7 +193,7 @@
     for (let v = 0; v <= 80; v += 20) grille += `<line class="g-grille" x1="${g}" x2="${d}" y1="${Y(v)}" y2="${Y(v)}"/><text class="g-txt" x="${g - 8}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`;
     el('g-temp').innerHTML = `
     <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Température du lenticulaire selon le cas de calcul, pour les solutions A et B">
-      <text class="g-titre" x="${g - 40}" y="24">Le lenticulaire reste 17 à 30 K sous sa limite de 70 °C</text>
+      <text class="g-titre" x="${g - 40}" y="24">Températures calculées : 40 à 52 °C, pour une limite de service de 70 °C</text>
       <text class="g-txt" x="${g - 40}" y="52">Température du lenticulaire, en °C</text>
       <rect x="${d - 330}" y="42" width="12" height="12" rx="2" fill="${C.a}"/><text class="g-txt" x="${d - 312}" y="52">A, sandwich étanche</text>
       <rect x="${d - 160}" y="42" width="12" height="12" rx="2" fill="${C.b}"/><text class="g-txt" x="${d - 142}" y="52">B, lames ventilées</text>
@@ -225,7 +225,7 @@
     const points = series.map(s => s.pts.map(p => `<circle class="pt" data-info="${s.nom}, vent de ${String(p.at(0)).replace('.', ',')} m/s|Rosée au-dessus de ${p.at(1)} % d’humidité" cx="${X(p.at(0))}" cy="${Y(p.at(1))}" r="4.5" fill="${s.coul}" stroke="#F8FAFA" stroke-width="2"/>`).join('')).join('');
     el('g-rosee').innerHTML = `
     <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Humidité relative à partir de laquelle la rosée se dépose sur le verre, selon le vent">
-      <text class="g-titre" x="16" y="24">À 4 m/s de vent, il faut 92 % d’humidité pour que la rosée se dépose</text>
+      <text class="g-titre" x="16" y="24">Seuil de rosée calculé : 76 % d’humidité sans vent, 92 % à 4 m/s</text>
       <text class="g-txt" x="16" y="52">Humidité relative seuil, par nuit claire</text>
       ${grille}
       <path d="${chemin(s15)}L${X(6)} ${Y(100)}L${X(0)} ${Y(100)}Z" fill="${C.a}" fill-opacity="0.1"/>
