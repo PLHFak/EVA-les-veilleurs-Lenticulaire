@@ -1,0 +1,204 @@
+/* Les Veilleurs, vitrine lenticulaire : note de calcul
+   Palette tirée du site : ciel de mer, encre pétrole, verre, sable. */
+@font-face { font-family: "Archivo"; font-style: normal; font-display: swap; font-weight: 100 900; font-stretch: 62% 125%; src: url(fonts/archivo-latin-wdth-normal.woff2) format("woff2-variations"); }
+@font-face { font-family: "STIX Two Text"; font-style: normal; font-display: swap; font-weight: 400 700; src: url(fonts/stix-two-text-latin-wght-normal.woff2) format("woff2-variations"); }
+@font-face { font-family: "STIX Two Text"; font-style: italic; font-display: swap; font-weight: 400 700; src: url(fonts/stix-two-text-latin-wght-italic.woff2) format("woff2-variations"); }
+:root {
+  --ciel: #EEF2F3;
+  --papier: #F8FAFA;
+  --encre: #12303A;
+  --encre-2: #48626B;
+  --trait: #C3D0D3;
+  --trait-fort: #8FA4AA;
+  --verre: #CFE3DD;
+  --mer: #BCD6DF;
+  --sable: #E8E0CB;
+  --terre: #DFE5D8;
+  --serie-a: #0B7FA0;
+  --serie-b: #C7781A;
+  --soleil: #C99200;
+  --chaud: #C2412D;
+  --titre: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --texte: "STIX Two Text", "Times New Roman", serif;
+  --mesure: 42rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--ciel);
+  color: var(--encre);
+  font-family: var(--texte);
+  font-size: 1.125rem;
+  line-height: 1.62;
+  -webkit-text-size-adjust: 100%;
+}
+
+a { color: inherit; text-decoration-color: var(--serie-a); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--encre); }
+:focus-visible { outline: 3px solid var(--serie-a); outline-offset: 3px; border-radius: 2px; }
+
+/* Bandeau */
+.bandeau {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; justify-content: space-between; gap: 1rem; align-items: baseline;
+  padding: 0.7rem clamp(1rem, 4vw, 3rem);
+  background: color-mix(in srgb, var(--ciel) 92%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--trait);
+  font-family: var(--titre); font-stretch: 88%; font-size: 0.95rem;
+}
+.bandeau-titre { font-weight: 650; text-decoration: none; }
+.bandeau-date { color: var(--encre-2); white-space: nowrap; }
+@media (max-width: 560px) { .bandeau-date { display: none; } }
+
+/* Ouverture */
+.ouverture {
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(1.5rem, 4vw, 4rem); align-items: start;
+  max-width: 82rem; margin: 0 auto;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem) clamp(2rem, 5vw, 4rem);
+}
+@media (max-width: 900px) { .ouverture { grid-template-columns: minmax(0, 1fr); } }
+
+h1 {
+  font-family: var(--titre); font-stretch: 66%; font-weight: 680;
+  font-size: clamp(2.5rem, 6.2vw, 5rem); line-height: 0.98; letter-spacing: -0.012em;
+  margin: 0 0 1.5rem; max-width: 14ch; text-wrap: balance;
+}
+.chapeau { max-width: 36rem; margin: 0 0 1rem; font-size: 1.2rem; line-height: 1.55; }
+.ouverture-liens { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; margin: 1.75rem 0 0; font-family: var(--titre); font-stretch: 88%; font-weight: 600; font-size: 1rem; }
+
+/* Boussole */
+.boussole { margin: 0; background: var(--papier); border: 1px solid var(--trait); padding: clamp(0.9rem, 2vw, 1.4rem); }
+.boussole figcaption { font-family: var(--titre); font-stretch: 80%; font-weight: 620; font-size: 1.15rem; line-height: 1.25; margin-bottom: 0.5rem; }
+#boussole-svg { display: block; width: 100%; height: auto; max-width: 30rem; margin: 0 auto; }
+.boussole-commande { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.5rem 1.25rem; align-items: end; margin-top: 0.5rem; font-family: var(--titre); font-stretch: 88%; font-size: 0.95rem; }
+.boussole-commande label[for="heure"] { display: flex; justify-content: space-between; grid-column: 1; font-weight: 600; }
+.boussole-commande output { font-variant-numeric: tabular-nums; }
+#heure { grid-column: 1; width: 100%; margin: 0; accent-color: var(--encre); height: 1.75rem; }
+.vent-choix { grid-column: 2; grid-row: 1 / span 2; border: 0; padding: 0; margin: 0; display: grid; gap: 0.15rem; }
+.vent-choix legend { padding: 0; font-weight: 600; }
+.vent-choix label { display: flex; gap: 0.4rem; align-items: center; cursor: pointer; }
+.vent-choix input { accent-color: var(--encre); width: 1.05rem; height: 1.05rem; margin: 0; }
+.boussole-lecture { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: 0.6rem 1rem; margin: 1rem 0 0; padding-top: 0.9rem; border-top: 1px solid var(--trait); font-family: var(--titre); font-stretch: 88%; }
+.boussole-lecture div { margin: 0; }
+.boussole-lecture dt { font-size: 0.82rem; color: var(--encre-2); line-height: 1.25; }
+.boussole-lecture dd { margin: 0.1rem 0 0; font-size: 1.35rem; font-weight: 620; font-variant-numeric: tabular-nums; line-height: 1.15; }
+.boussole-lecture .serie-a dt::before, .boussole-lecture .serie-b dt::before { content: ""; display: inline-block; width: 0.65rem; height: 0.65rem; margin-right: 0.35rem; border-radius: 50%; }
+.boussole-lecture .serie-a dt::before { background: var(--serie-a); }
+.boussole-lecture .serie-b dt::before { background: var(--serie-b); }
+
+/* Boussole : dessin */
+.b-mer { fill: var(--mer); } .b-plage { fill: var(--sable); } .b-terre { fill: var(--terre); } .b-digue { fill: #D5DBDC; }
+.b-cercle { fill: none; stroke: var(--trait-fort); stroke-width: 1; }
+.b-vitre { stroke: var(--encre); stroke-width: 7; stroke-linecap: butt; }
+.b-course { fill: none; stroke: var(--soleil); stroke-width: 1.5; stroke-dasharray: 2 5; stroke-linecap: round; }
+.b-rayon { stroke: var(--soleil); stroke-width: 2; }
+.b-soleil { fill: var(--soleil); stroke: var(--papier); stroke-width: 2; }
+.b-vent { stroke: var(--encre-2); stroke-width: 1.5; fill: none; }
+.b-txt { font-family: var(--titre); font-stretch: 85%; font-size: 13px; fill: var(--encre); }
+.b-txt-2 { font-family: var(--titre); font-stretch: 85%; font-size: 12px; fill: var(--encre-2); }
+.b-heure { font-family: var(--titre); font-stretch: 85%; font-size: 11px; fill: var(--encre-2); font-variant-numeric: tabular-nums; }
+
+/* Corps : sommaire + note */
+.corps { display: grid; grid-template-columns: 14rem minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 4rem); max-width: 82rem; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 3rem) 4rem; border-top: 1px solid var(--trait); }
+.sommaire { position: sticky; top: 4rem; align-self: start; padding-top: 2.5rem; font-family: var(--titre); font-stretch: 85%; font-size: 0.95rem; max-height: calc(100vh - 4.5rem); overflow: auto; }
+.sommaire ol { margin: 0; padding: 0 0 0 1.6rem; display: grid; gap: 0.35rem; }
+.sommaire li::marker { color: var(--encre-2); font-variant-numeric: tabular-nums; }
+.sommaire a { text-decoration: none; display: inline-block; padding: 0.1rem 0; }
+.sommaire a:hover, .sommaire a[aria-current="true"] { text-decoration: underline; text-decoration-color: var(--serie-a); text-decoration-thickness: 2px; }
+.sommaire a[aria-current="true"] { font-weight: 650; }
+@media (max-width: 900px) {
+  .corps { grid-template-columns: minmax(0, 1fr); }
+  .sommaire { position: static; max-height: none; padding-top: 1.5rem; }
+  .sommaire ol { grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
+}
+
+.note { min-width: 0; }
+.note > section { padding-top: 3.25rem; }
+.note > section > * { max-width: var(--mesure); }
+.note > section > .large, .note > section > .defile { max-width: 56rem; }
+
+h2 { font-family: var(--titre); font-stretch: 74%; font-weight: 660; font-size: clamp(1.6rem, 3.1vw, 2.25rem); line-height: 1.08; letter-spacing: -0.005em; margin: 0 0 1rem; text-wrap: balance; max-width: 30ch !important; }
+h3 { font-family: var(--titre); font-stretch: 82%; font-weight: 650; font-size: 1.2rem; line-height: 1.25; margin: 2rem 0 0.5rem; }
+p { margin: 0 0 1rem; }
+ul, ol { margin: 0 0 1rem; padding-left: 1.3rem; }
+li { margin-bottom: 0.45rem; }
+code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.9em; background: color-mix(in srgb, var(--trait) 45%, transparent); padding: 0.05em 0.3em; }
+
+.etapes { counter-reset: e; list-style: none; padding-left: 0; }
+.etapes li { counter-increment: e; position: relative; padding: 0.7rem 0 0.7rem 3rem; border-top: 1px solid var(--trait); margin: 0; }
+.etapes li:last-child { border-bottom: 1px solid var(--trait); }
+.etapes li::before { content: counter(e); position: absolute; left: 0; top: 0.45rem; font-family: var(--titre); font-stretch: 66%; font-weight: 680; font-size: 1.8rem; line-height: 1.2; color: var(--serie-a); font-variant-numeric: tabular-nums; }
+.a-confirmer { list-style: none; padding-left: 0; }
+.a-confirmer li { position: relative; padding-left: 1.7rem; }
+.a-confirmer li::before { content: ""; position: absolute; left: 0; top: 0.42em; width: 0.9rem; height: 0.9rem; border: 1.5px solid var(--encre-2); }
+
+/* Tableaux */
+.defile { overflow-x: auto; margin: 1.25rem 0 1.5rem; }
+table { border-collapse: collapse; width: 100%; font-family: var(--titre); font-stretch: 90%; font-size: 0.95rem; line-height: 1.35; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; vertical-align: top; padding: 0.55rem 0.9rem 0.55rem 0; border-bottom: 1px solid var(--trait); }
+thead th { font-weight: 650; border-bottom: 1.5px solid var(--encre); vertical-align: bottom; }
+tbody th { font-weight: 500; min-width: 11rem; }
+table a { text-decoration-thickness: 1.5px; }
+.deux-vitres { min-width: 38rem; }
+.deux-vitres .col-a, .deux-vitres .col-b { padding-left: 0.9rem; border-top: 5px solid; width: 34%; }
+.deux-vitres .col-a { border-top-color: var(--serie-a); }
+.deux-vitres .col-b { border-top-color: var(--serie-b); }
+.deux-vitres td { padding-left: 0.9rem; }
+.deux-vitres td:nth-child(2) { background: color-mix(in srgb, var(--verre) 55%, transparent); }
+.deux-vitres td[colspan] { background: none; text-align: left; }
+
+/* Formules */
+.formule { overflow-x: auto; overflow-y: hidden; margin: 0.75rem 0 1.25rem; padding: 0.6rem 0 0.6rem 1rem; border-left: 3px solid var(--verre); font-size: 0.98rem; }
+.formule .katex-display { margin: 0; text-align: left; }
+.formule .katex-display > .katex { text-align: left; }
+
+/* Figures et graphes */
+figure.large { margin: 1.5rem 0 1.75rem; }
+figure.large figcaption { font-family: var(--titre); font-stretch: 88%; font-size: 0.88rem; color: var(--encre-2); line-height: 1.4; margin-top: 0.6rem; max-width: 46rem; }
+.graphe { background: var(--papier); border: 1px solid var(--trait); padding: 0.75rem; }
+.graphe svg { display: block; width: 100%; height: auto; }
+.g-titre { font-family: var(--titre); font-stretch: 82%; font-weight: 650; font-size: 15px; fill: var(--encre); }
+.g-txt { font-family: var(--titre); font-stretch: 88%; font-size: 12px; fill: var(--encre-2); font-variant-numeric: tabular-nums; }
+.g-val { font-family: var(--titre); font-stretch: 88%; font-size: 12.5px; font-weight: 600; fill: var(--encre); font-variant-numeric: tabular-nums; }
+.g-grille { stroke: var(--trait); stroke-width: 1; }
+.g-axe { stroke: var(--trait-fort); stroke-width: 1; }
+.g-repere { stroke: var(--encre); stroke-width: 1.25; }
+.g-viseur { stroke: var(--encre-2); stroke-width: 1; }
+details { margin-top: 0.75rem; font-family: var(--titre); font-stretch: 88%; font-size: 0.92rem; }
+summary { cursor: pointer; font-weight: 600; padding: 0.3rem 0; }
+
+/* Coupe */
+.coupe { display: block; width: 100%; height: auto; background: var(--papier); border: 1px solid var(--trait); }
+.coupe text { font-family: var(--titre); font-stretch: 88%; font-size: 11.5px; fill: var(--encre-2); }
+.coupe .nom { font-size: 13.5px; font-weight: 650; fill: var(--encre); font-stretch: 82%; }
+.coupe .chiffre { font-size: 14px; font-weight: 680; fill: var(--encre); }
+.coupe .fort { fill: var(--encre); }
+.coupe .f-verre { fill: var(--verre); stroke: var(--trait-fort); stroke-width: 1.25; }
+.coupe .f-lent { fill: color-mix(in srgb, var(--serie-a) 16%, white); stroke: var(--serie-a); stroke-width: 2; }
+.coupe .chassis { fill: none; stroke: var(--trait-fort); stroke-width: 1.25; }
+.coupe .cadre-a, .coupe .cadre-b { fill: none; stroke: var(--trait); stroke-width: 1; }
+.coupe .l-soleil { stroke: var(--soleil); stroke-width: 1.6; fill: none; }
+.coupe .l-chaud { stroke: var(--chaud); stroke-width: 1.6; fill: none; }
+.coupe .l-air { stroke: var(--encre-2); stroke-width: 1.5; stroke-dasharray: 5 4; fill: none; }
+.coupe .p-dess, .coupe .p-dess circle { fill: var(--encre-2); }
+
+/* Bulle des graphes */
+.bulle { position: fixed; z-index: 30; pointer-events: none; background: var(--encre); color: #fff; font-family: var(--titre); font-stretch: 88%; font-size: 0.85rem; line-height: 1.4; padding: 0.5rem 0.7rem; max-width: 16rem; font-variant-numeric: tabular-nums; }
+.bulle b { font-weight: 650; }
+.bulle i { display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 50%; margin-right: 0.35rem; }
+
+.pied { border-top: 1px solid var(--trait); padding: 2rem clamp(1rem, 4vw, 3rem) 3rem; font-family: var(--titre); font-stretch: 88%; font-size: 0.9rem; color: var(--encre-2); }
+.pied p { max-width: 46rem; margin: 0 auto; }
+
+@media print {
+  .bandeau, .sommaire, .boussole-commande, .bulle { display: none !important; }
+  body { background: #fff; font-size: 11pt; }
+  .corps { display: block; }
+  .note > section { break-inside: avoid-page; }
+}

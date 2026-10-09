@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Les Veilleurs, vitrine lenticulaire : note de calcul</title>
+<meta name="description" content="Note de calcul thermique, hygrométrique et UV pour la vitrine lenticulaire de 2 × 1,8 m posée sur la digue de Lombardsijde.">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="bandeau">
+  <a class="bandeau-titre" href="#haut">Les Veilleurs, vitrine lenticulaire</a>
+  <span class="bandeau-date">Note de calcul du 9 octobre 2026</span>
+</header>
+
+<main id="haut">
+
+<section class="ouverture">
+  <div class="ouverture-texte">
+    <h1>Entre deux verres, le lenticulaire ne dépasse pas 45&nbsp;°C</h1>
+    <p class="chapeau">La vitrine de 2&nbsp;×&nbsp;1,8&nbsp;m est posée sur la digue de Lombardsijde, parallèle au rivage. Sans encre, le lenticulaire n'absorbe que 10&nbsp;% du soleil. Par une journée à 35&nbsp;°C sans vent, il atteint 45&nbsp;°C en sandwich étanche et 47&nbsp;°C avec des lames d'air ventilées, pour une limite de 70&nbsp;°C.</p>
+    <p class="chapeau">La chaleur ne départage donc pas les deux solutions. La rosée, le sel et l'eau contenue dans le plastique le font, en faveur du sandwich étanche avec dessiccant.</p>
+    <p class="ouverture-liens"><a href="#comparaison">Comparer les deux solutions</a><a href="#recommandation">Lire la recommandation</a></p>
+  </div>
+
+  <figure class="boussole" aria-labelledby="boussole-titre">
+    <figcaption id="boussole-titre">La vitre au fil d'une journée de canicule, le 20 juillet</figcaption>
+    <svg id="boussole-svg" viewBox="0 0 420 420" role="img" aria-label="Vue en plan : la digue, la mer au nord-ouest, la terre au sud-est, la vitre parallèle à la digue et la course du soleil"></svg>
+    <div class="boussole-commande">
+      <label for="heure">Heure d'été <output id="heure-lue" for="heure">13 h 00</output></label>
+      <input id="heure" type="range" min="0" max="35" step="1" value="16">
+      <fieldset class="vent-choix">
+        <legend>Vent</legend>
+        <label><input type="radio" name="vent" value="0" checked> sans vent</label>
+        <label><input type="radio" name="vent" value="2"> 2&nbsp;m/s</label>
+      </fieldset>
+    </div>
+    <dl class="boussole-lecture">
+      <div><dt>Soleil, face terre</dt><dd id="l-terre">631 W/m²</dd></div>
+      <div><dt>Soleil, face mer</dt><dd id="l-mer">122 W/m²</dd></div>
+      <div><dt>Air</dt><dd id="l-air">32,3 °C</dd></div>
+      <div class="serie-a"><dt>Lenticulaire, sandwich A</dt><dd id="l-a">44,5 °C</dd></div>
+      <div class="serie-b"><dt>Lenticulaire, lames B</dt><dd id="l-b">47,1 °C</dd></div>
+    </dl>
+  </figure>
+</section>
+
+<div class="corps">
+
+<nav class="sommaire" aria-label="Sommaire">
+  <ol>
+    <li><a href="#comparaison">Comparaison</a></li>
+    <li><a href="#coupe">Les deux solutions en coupe</a></li>
+    <li><a href="#orientation">Orientation, soleil et vent</a></li>
+    <li><a href="#energie">Énergie absorbée</a></li>
+    <li><a href="#temperatures">Températures</a></li>
+    <li><a href="#ventilation">Ventilation naturelle</a></li>
+    <li><a href="#rosee">Point de rosée</a></li>
+    <li><a href="#dessiccant">Humidité et dessiccant</a></li>
+    <li><a href="#uv">Bilan UV</a></li>
+    <li><a href="#sel">Sel marin</a></li>
+    <li><a href="#dilatation">Dilatation et pression</a></li>
+    <li><a href="#recommandation">Recommandation</a></li>
+    <li><a href="#donnees">Données et sources</a></li>
+  </ol>
+</nav>
+
+<article class="note">
+
+<section id="comparaison">
+  <h2>Le sandwich étanche l'emporte sur tous les critères sauf un</h2>
+  <p>Il dépend entièrement de la qualité de son joint. Les températures sont données pour deux cas : la journée réelle sur le site (canicule à 35&nbsp;°C, orientation de la digue) et un cas enveloppe plus sévère (800&nbsp;W/m² en même temps que 35&nbsp;°C).</p>
+  <div class="defile">
+  <table class="deux-vitres">
+    <thead>
+      <tr><th scope="col">Critère</th><th scope="col" class="col-a">A. Sandwich étanche + dessiccant</th><th scope="col" class="col-b">B. Lames d'air ventilées 2&nbsp;×&nbsp;10&nbsp;mm</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Lenticulaire, journée réelle, sans vent</th><td>45&nbsp;°C</td><td>47&nbsp;°C</td></tr>
+      <tr><th scope="row">Lenticulaire, journée réelle, vent de 2&nbsp;m/s</th><td>40&nbsp;°C</td><td>42&nbsp;°C</td></tr>
+      <tr><th scope="row">Lenticulaire, cas enveloppe, sans vent</th><td>49&nbsp;°C</td><td>52&nbsp;°C</td></tr>
+      <tr><th scope="row">Marge sous 70&nbsp;°C dans le pire cas</th><td>21&nbsp;K</td><td>18&nbsp;K</td></tr>
+      <tr><th scope="row">Chaleur évacuée par l'air de la cavité</th><td>0&nbsp;% : tout passe par les verres</td><td>5 à 8&nbsp;%</td></tr>
+      <tr><th scope="row">Lenticulaire encrassé (absorption 20&nbsp;%), cas enveloppe</th><td>54&nbsp;°C</td><td>59&nbsp;°C</td></tr>
+      <tr><th scope="row">Condensation intérieure</th><td>Aucune tant que le dessiccant n'est pas saturé</td><td>À chaque nuit claire peu ventée et à chaque brume</td></tr>
+      <tr><th scope="row">Sel et sable dans la cavité</th><td>Aucun</td><td>1 à 13&nbsp;g de sel par an traversent la cavité</td></tr>
+      <tr><th scope="row">UV reçus par le lenticulaire</th><td colspan="2">Moins de 1&nbsp;% dans les deux cas : les deux verres sont feuilletés</td></tr>
+      <tr><th scope="row">Entretien intérieur</th><td>Aucun</td><td>Démontage pour nettoyer la face lentilles</td></tr>
+      <tr><th scope="row">Risque principal</th><td>Joint défaillant : buée permanente, non drainable</td><td>Voile de sel et traces d'eau entre les verres</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>La ventilation répond à une surchauffe qui n'existe plus sans encre, et elle crée deux problèmes : la rosée et le sel.</p>
+</section>
+
+<section id="coupe">
+  <h2>En A la chaleur sort par le verre, en B l'air isole</h2>
+  <figure class="large">
+    <svg viewBox="0 0 760 470" role="img" aria-label="Coupes verticales des deux solutions : sandwich étanche à gauche, lames d'air ventilées à droite" class="coupe">
+      <defs>
+        <marker id="m-soleil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#C99200"/></marker>
+        <marker id="m-chaud" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#C2412D"/></marker>
+        <marker id="m-air" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#48626B"/></marker>
+        <pattern id="lentilles" width="6" height="10" patternUnits="userSpaceOnUse"><path d="M3 0a5.67 5.67 0 0 0 0 10" fill="none" stroke="#0B7FA0" stroke-width="1.2"/></pattern>
+      </defs>
+
+      <g class="legende">
+        <rect x="24" y="14" width="14" height="14" class="f-verre"/><text x="44" y="25">Verre 44.2</text>
+        <rect x="128" y="14" width="14" height="14" class="f-lent"/><text x="148" y="25">Lenticulaire 3 mm</text>
+        <line x1="272" x2="300" y1="21" y2="21" class="l-soleil" marker-end="url(#m-soleil)"/><text x="308" y="25">Soleil</text>
+        <line x1="366" x2="394" y1="21" y2="21" class="l-chaud" marker-end="url(#m-chaud)"/><text x="402" y="25">Chaleur sortante</text>
+        <line x1="520" x2="548" y1="21" y2="21" class="l-air" marker-end="url(#m-air)"/><text x="556" y="25">Air</text>
+        <circle cx="604" cy="21" r="2.5" class="p-dess"/><circle cx="612" cy="21" r="2.5" class="p-dess"/><text x="622" y="25">Dessiccant</text>
+      </g>
+
+      <g>
+        <rect x="24" y="46" width="344" height="400" class="cadre-a"/>
+        <text x="40" y="72" class="nom">A. Sandwich étanche + dessiccant</text>
+        <rect x="86" y="100" width="98" height="18" class="chassis"/>
+        <g class="p-dess"><circle cx="96" cy="109" r="2.5"/><circle cx="106" cy="109" r="2.5"/><circle cx="116" cy="109" r="2.5"/><circle cx="126" cy="109" r="2.5"/><circle cx="136" cy="109" r="2.5"/><circle cx="146" cy="109" r="2.5"/><circle cx="156" cy="109" r="2.5"/><circle cx="166" cy="109" r="2.5"/><circle cx="176" cy="109" r="2.5"/></g>
+        <rect x="86" y="368" width="98" height="18" class="chassis"/>
+        <rect x="96" y="118" width="28" height="250" class="f-verre"/>
+        <rect x="124" y="118" width="6" height="250" fill="url(#lentilles)"/>
+        <rect x="127" y="118" width="16" height="250" class="f-lent"/>
+        <rect x="146" y="118" width="28" height="250" class="f-verre"/>
+        <line x1="40" x2="92" y1="158" y2="158" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="40" x2="92" y1="183" y2="183" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="40" x2="92" y1="208" y2="208" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="92" x2="44" y1="313" y2="313" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="92" x2="44" y1="338" y2="338" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="178" x2="226" y1="313" y2="313" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="178" x2="226" y1="338" y2="338" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <text x="196" y="113">Dessiccant dans le cadre</text>
+        <text x="196" y="146">Films d'air de 0,2 mm :</text>
+        <text x="196" y="162">tout est en contact</text>
+        <text x="196" y="196" class="chiffre">45 °C sans vent</text>
+        <text x="196" y="214" class="fort">40 °C à 2 m/s</text>
+        <text x="196" y="246">Cavité fermée : ni sel,</text>
+        <text x="196" y="262">ni buée tant que le</text>
+        <text x="196" y="278">dessiccant tient</text>
+        <text x="234" y="317">conduction du verre,</text>
+        <text x="234" y="333">puis vent et</text>
+        <text x="234" y="349">rayonnement</text>
+        <text x="40" y="426">Joint périphérique à barrière butyle</text>
+      </g>
+
+      <g>
+        <rect x="392" y="46" width="344" height="400" class="cadre-b"/>
+        <text x="408" y="72" class="nom">B. Lames d'air ventilées 2 × 10 mm</text>
+        <rect x="440" y="92" width="140" height="8" class="f-verre"/>
+        <rect x="442" y="368" width="44" height="14" class="chassis"/>
+        <rect x="496" y="368" width="28" height="14" class="chassis"/>
+        <rect x="534" y="368" width="44" height="14" class="chassis"/>
+        <rect x="452" y="118" width="28" height="250" class="f-verre"/>
+        <rect x="499" y="118" width="6" height="250" fill="url(#lentilles)"/>
+        <rect x="502" y="118" width="16" height="250" class="f-lent"/>
+        <rect x="540" y="118" width="28" height="250" class="f-verre"/>
+        <path d="M491 406V109H434" class="l-air" marker-end="url(#m-air)"/>
+        <path d="M529 406V109H586" class="l-air" marker-end="url(#m-air)"/>
+        <line x1="408" x2="448" y1="158" y2="158" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="408" x2="448" y1="183" y2="183" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="408" x2="448" y1="208" y2="208" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="448" x2="410" y1="313" y2="313" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="448" x2="410" y1="338" y2="338" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="572" x2="610" y1="313" y2="313" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="572" x2="610" y1="338" y2="338" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <text x="594" y="99">Sortie sous toit</text>
+        <text x="594" y="146">L'air n'évacue que</text>
+        <text x="594" y="162">5 à 8 % de la chaleur</text>
+        <text x="594" y="196" class="chiffre">47 °C sans vent</text>
+        <text x="594" y="214" class="fort">42 °C à 2 m/s</text>
+        <text x="594" y="246">Air marin dans la</text>
+        <text x="594" y="262">cavité : sel, sable,</text>
+        <text x="594" y="278">rosée la nuit</text>
+        <text x="408" y="426">Petites entrées d'air en bas : 9 à 14 m³/h</text>
+      </g>
+    </svg>
+    <figcaption>Coupes verticales schématiques, épaisseurs non à l'échelle. Températures de la journée réelle à 35&nbsp;°C.</figcaption>
+  </figure>
+  <p>En A, le lenticulaire touche les deux verres. Sa chaleur passe par conduction dans le verre, que le vent refroidit sur 7,2&nbsp;m². En B, l'air de la lame isole le lenticulaire des verres et ne renouvelle presque rien.</p>
+</section>
+
+<section id="orientation">
+  <h2>À l'heure la plus chaude, le soleil est dans le plan de la vitre</h2>
+  <p>La digue suit le rivage, orienté à 56° du nord (azimut calculé sur la ligne Nieuwpoort–Ostende, à confirmer sur plan). La vitre lui est parallèle : une face regarde la terre au sud-est (146°), l'autre la mer au nord-ouest (326°). Position du site : 51,17357°&nbsp;N, 2,78028°&nbsp;E.</p>
+  <figure class="large">
+    <div id="g-jour" class="graphe"></div>
+    <figcaption>Ciel clair calculé pour le 20 juillet (modèle d'Ineichen, trouble de Linke 3, albédo 0,25). Air de 21&nbsp;°C à 6&nbsp;h à 35&nbsp;°C à 16&nbsp;h&nbsp;30. Sans vent.</figcaption>
+    <details><summary>Voir les valeurs heure par heure</summary><div class="defile" id="t-jour"></div></details>
+  </figure>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Moment</th><th scope="col">Soleil reçu</th><th scope="col">Air</th><th scope="col">Lenticulaire A</th><th scope="col">Lenticulaire B</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">11&nbsp;h&nbsp;30, maximum sur la face terre</th><td>684&nbsp;W/m²</td><td>29,8&nbsp;°C</td><td>42,8&nbsp;°C</td><td>45,6&nbsp;°C</td></tr>
+      <tr><th scope="row">13&nbsp;h, lenticulaire le plus chaud</th><td>631&nbsp;W/m²</td><td>32,3&nbsp;°C</td><td>44,5&nbsp;°C</td><td>47,1&nbsp;°C</td></tr>
+      <tr><th scope="row">16&nbsp;h&nbsp;30, air le plus chaud</th><td>106 et 139&nbsp;W/m² par face</td><td>35,0&nbsp;°C</td><td>39,0&nbsp;°C</td><td>39,9&nbsp;°C</td></tr>
+      <tr><th scope="row">19&nbsp;h&nbsp;30, maximum sur la face mer</th><td>512&nbsp;W/m²</td><td>32,9&nbsp;°C</td><td>42,1&nbsp;°C</td><td>44,1&nbsp;°C</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li><strong>Le pic de soleil et le pic de chaleur ne coïncident pas.</strong> À 16&nbsp;h&nbsp;30 le soleil est à l'azimut 239°, presque dans l'axe de la digue (236°). Il rase les deux faces.</li>
+    <li><strong>La face terre reçoit le plus en septembre</strong> (820&nbsp;W/m², soleil plus bas), mais l'air est plus frais : 40&nbsp;°C au lenticulaire pour 25&nbsp;°C d'air.</li>
+    <li><strong>Le vent dominant longe la vitre.</strong> Il vient de l'ouest (263°), à 27° seulement du plan de la vitre, et balaie les deux faces.</li>
+    <li><strong>Par canicule le vent est souvent perpendiculaire</strong> (vent de terre ou brise de mer) : une face est abritée. Si son échange convectif est réduit d'un tiers, le lenticulaire gagne 1&nbsp;K.</li>
+  </ul>
+</section>
+
+<section id="energie">
+  <h2>Le panneau absorbe moins de 1&nbsp;kW, dont un tiers dans le lenticulaire</h2>
+  <p>Plus de la moitié du soleil traverse la vitrine et ressort. Chaque couche \(k\) (verre avant, lenticulaire, verre arrière) transmet, réfléchit et absorbe. Les flux vers l'arrière \(F\) et vers l'avant \(B\) se calculent avec les réflexions multiples :</p>
+  <div class="formule">\[F_k = \tau_k F_{k-1} + \rho_k B_k, \qquad B_{k-1} = \rho_k F_{k-1} + \tau_k B_k, \qquad F_0 = G, \quad B_3 = G_{arr}\]</div>
+  <div class="formule">\[S_k = \alpha_k \left( F_{k-1} + B_k \right)\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Flux (W/m²)</th><th scope="col">Journée réelle, 13&nbsp;h</th><th scope="col">Cas enveloppe</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Soleil sur la face avant \(G\)</th><td>631</td><td>800</td></tr>
+      <tr><th scope="row">Soleil sur la face arrière \(G_{arr}\)</th><td>122</td><td>100</td></tr>
+      <tr><th scope="row">Absorbé par le verre avant</th><td>86</td><td>105</td></tr>
+      <tr><th scope="row">Absorbé par le lenticulaire</th><td>66</td><td>79</td></tr>
+      <tr><th scope="row">Absorbé par le verre arrière</th><td>62</td><td>72</td></tr>
+      <tr><th scope="row">Total absorbé</th><td>214</td><td>255</td></tr>
+      <tr><th scope="row">Puissance absorbée par les 3,6&nbsp;m²</th><td>769&nbsp;W</td><td>919&nbsp;W</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Avec une image imprimée sombre, le lenticulaire absorberait environ 590&nbsp;W/m² au lieu de 79. C'est ce cas, sept fois plus chargé, qui mène aux 80&nbsp;°C annoncés. Il ne s'applique pas ici.</p>
+</section>
+
+<section id="temperatures">
+  <h2>Dans tous les cas calculés, plus de 17&nbsp;K de marge</h2>
+  <figure class="large">
+    <div id="g-temp" class="graphe"></div>
+    <figcaption>Température du lenticulaire en haut du panneau. Journée réelle : maximum de la journée du 20 juillet. Cas enveloppe : 800&nbsp;W/m² et 35&nbsp;°C simultanés. Entrées d'air de B à 20&nbsp;% de la section.</figcaption>
+  </figure>
+  <h3>Bilan en régime établi</h3>
+  <p>Chaque couche reçoit son flux absorbé \(S\) et l'échange avec ses voisines. Sur chaque face extérieure, convection par le vent \(v\) et rayonnement vers l'environnement (températures en kelvins) :</p>
+  <div class="formule">\[q_{ext} = h_c \,(T_s - T_a) + \varepsilon \sigma \left( T_s^4 - T_a^4 \right), \qquad h_c = 4 + 4v\]</div>
+  <p>Entre le lenticulaire et chaque verre, conduction dans l'air d'épaisseur \(\delta\) et rayonnement en parallèle :</p>
+  <div class="formule">\[h_{air} = \frac{\lambda_{air}}{\delta} + h_r, \qquad h_r = \frac{4 \sigma T_m^3}{\dfrac{1}{\varepsilon_1} + \dfrac{1}{\varepsilon_2} - 1} \approx 6{,}5 \ \mathrm{W/m^2K}\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Résistance thermique</th><th scope="col">Calcul</th><th scope="col">m²·K/W</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Verre 44.2</th><td>0,008 / 1,0 + 0,00076 / 0,20</td><td>0,012</td></tr>
+      <tr><th scope="row">Lenticulaire PMMA 3&nbsp;mm</th><td>0,003 / 0,19</td><td>0,016</td></tr>
+      <tr><th scope="row">A : film d'air de 0,15&nbsp;mm</th><td>1 / (0,0271 / 0,00015 + 6,5)</td><td>0,005</td></tr>
+      <tr><th scope="row">B : lame d'air de 10&nbsp;mm immobile</th><td>1 / (0,0271 / 0,010 + 6,5)</td><td>0,109</td></tr>
+      <tr><th scope="row">Face extérieure sans vent</th><td>1 / (4 + 6,3)</td><td>0,097</td></tr>
+      <tr><th scope="row">Face extérieure, vent de 4&nbsp;m/s</th><td>1 / (20 + 6,3)</td><td>0,038</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>La lame d'air de 10&nbsp;mm isole vingt fois plus que le film de contact. En A, la seule résistance qui compte est celle des faces extérieures, que le vent divise par 2,5.</p>
+  <p>Contrôle à la main pour A dans le cas enveloppe, sans vent, toute la chaleur sortant par les deux faces :</p>
+  <div class="formule">\[\Delta T \approx \frac{S_{total}}{2\,(h_c + h_r)} = \frac{255}{2 \times (4 + 6{,}3)} = 12{,}4 \ \mathrm{K} \;\Rightarrow\; T \approx 47 \ ^\circ\mathrm{C}\]</div>
+  <p>Le modèle complet donne 49&nbsp;°C au lenticulaire, les verres étant à 48&nbsp;°C. Précision estimée : ±&nbsp;3&nbsp;K.</p>
+  <h3>Inertie et sensibilité</h3>
+  <p>Le panneau pèse 157&nbsp;kg (144&nbsp;kg de verre, 13&nbsp;kg de PMMA) et stocke 123&nbsp;kJ/K. Sa constante de temps est de 30&nbsp;min sans vent et 11&nbsp;min à 4&nbsp;m/s : l'équilibre est atteint, l'inertie ne protège pas.</p>
+  <p>Si le lenticulaire absorbait 20&nbsp;% du soleil (salissure, jaunissement, film teinté), il atteindrait 54&nbsp;°C en A et 59&nbsp;°C en B dans le cas enveloppe. À 40&nbsp;%, 62&nbsp;°C en A et 72&nbsp;°C en B. Un jeu d'air de 1&nbsp;mm par face en A coûte 1&nbsp;K.</p>
+</section>
+
+<section id="ventilation">
+  <h2>Le tirage naturel n'emporte que 5 à 8&nbsp;% de la chaleur</h2>
+  <p>Dans une lame de 10&nbsp;mm, il déplace 9 à 14&nbsp;m³/h. L'air prend la température des parois dès les 15 premiers centimètres, puis monte sans plus rien évacuer.</p>
+  <p>Le moteur est la différence de densité entre l'air de la lame et l'air extérieur, aidée ou contrariée par le vent :</p>
+  <div class="formule">\[\Delta p_{tirage} = \rho \, g \, H \, \frac{\bar{T}_{lame} - T_a}{\bar{T}_{lame}}, \qquad \Delta p_{vent} = \Delta C_p \, \frac{\rho v^2}{2}\]</div>
+  <p>Il est consommé par le frottement laminaire entre deux plans distants de \(b\) et par les orifices d'entrée et de sortie, de section relative \(\varphi\) :</p>
+  <div class="formule">\[\Delta p_{frottement} = \frac{12 \, \mu \, H \, u}{b^2}, \qquad \Delta p_{orifices} = \frac{\rho u^2}{2} \left[ \frac{1}{(C_d \varphi_e)^2} + \frac{1}{(C_d \varphi_s)^2} \right]\]</div>
+  <p>Échange entre l'air et les parois, et hauteur au bout de laquelle l'air est saturé en chaleur :</p>
+  <div class="formule">\[h_{lame} = \frac{Nu \, \lambda_{air}}{2b} = \frac{7{,}54 \times 0{,}0271}{0{,}020} = 10{,}2 \ \mathrm{W/m^2K}, \qquad z^* = \frac{\rho \, u \, b \, c_p}{2 \, h_{lame}} \approx 5{,}5 \ \mathrm{cm}\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Cas enveloppe, H = 1,8&nbsp;m, b = 10&nbsp;mm, entrées à 20&nbsp;% de la section</th><th scope="col">Sans vent</th><th scope="col">Vent de 4&nbsp;m/s</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Tirage thermique disponible</th><td>0,7 à 0,85&nbsp;Pa</td><td>0,4 à 0,5&nbsp;Pa</td></tr>
+      <tr><th scope="row">Vitesse de l'air dans la lame</th><td>0,09 à 0,10&nbsp;m/s</td><td>0,06 à 0,07&nbsp;m/s</td></tr>
+      <tr><th scope="row">Débit total des deux lames</th><td>12 à 14&nbsp;m³/h</td><td>8 à 9&nbsp;m³/h</td></tr>
+      <tr><th scope="row">Chaleur emportée par l'air</th><td>13 à 19&nbsp;W/m²</td><td>4 à 6&nbsp;W/m²</td></tr>
+      <tr><th scope="row">Nombre de Reynolds</th><td>120, laminaire</td><td>80, laminaire</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Avec des fentes ouvertes sur toute la largeur, la vitesse monte à 0,14–0,17&nbsp;m/s et la température en haut du panneau ne change pas. Si le vent ajoute une différence de pression (\(\Delta C_p = 0{,}3\) à 4&nbsp;m/s), le débit atteint 30&nbsp;m³/h, toujours sans effet sur la température maximale. Le vent refroidit le panneau par ses faces extérieures, pas par la cavité.</p>
+</section>
+
+<section id="rosee">
+  <h2>Sans vent, la rosée se dépose dès 76&nbsp;% d'humidité</h2>
+  <p>Par nuit claire, le verre descend 1 à 4&nbsp;K sous la température de l'air. En B la rosée se forme aussi à l'intérieur, côté lentilles. En A le dessiccant l'empêche.</p>
+  <figure class="large">
+    <div id="g-rosee" class="graphe"></div>
+    <figcaption>Humidité relative à partir de laquelle le verre passe sous le point de rosée, par nuit claire, pour une face verticale.</figcaption>
+  </figure>
+  <h3>Point de rosée</h3>
+  <p>Formule de Magnus, \(T\) en °C, \(HR\) entre 0 et 1 :</p>
+  <div class="formule">\[p_{sat}(T) = 611{,}2 \, \exp\!\left( \frac{17{,}62 \, T}{243{,}12 + T} \right) \ \mathrm{Pa}\]</div>
+  <div class="formule">\[T_r = \frac{243{,}12 \, \gamma}{17{,}62 - \gamma}, \qquad \gamma = \ln(HR) + \frac{17{,}62 \, T}{243{,}12 + T}\]</div>
+  <p>À 15&nbsp;°C et 90&nbsp;% d'humidité, le point de rosée est à 13,4&nbsp;°C : il suffit que le verre soit 1,6&nbsp;K plus froid que l'air.</p>
+  <h3>Température du verre la nuit</h3>
+  <p>Une face verticale voit le ciel pour moitié et le sol pour moitié. Elle perd par rayonnement vers le ciel clair ce que l'air et le sol lui rendent (températures en kelvins, \(T_r\) en °C dans l'émissivité du ciel) :</p>
+  <div class="formule">\[h_c \,(T_a - T_s) + \tfrac{1}{2} \varepsilon \sigma \left( T_a^4 - T_s^4 \right) = \tfrac{1}{2} \varepsilon \sigma \left( T_s^4 - T_{ciel}^4 \right)\]</div>
+  <div class="formule">\[T_{ciel} = T_a \, \varepsilon_{ciel}^{1/4}, \qquad \varepsilon_{ciel} = 0{,}711 + 0{,}56 \, \frac{T_r}{100} + 0{,}73 \left( \frac{T_r}{100} \right)^2\]</div>
+  <p>Par une nuit à 15&nbsp;°C et 85&nbsp;% d'humidité, le ciel clair rayonne comme un corps à −1&nbsp;°C. Le verre descend à 11,0&nbsp;°C sans vent et à 13,6&nbsp;°C par 4&nbsp;m/s.</p>
+  <h3>Conséquences pour chaque solution</h3>
+  <ul>
+    <li><strong>Faces extérieures :</strong> même rosée en A et en B. Elle sèche au matin et se nettoie.</li>
+    <li><strong>B, faces intérieures :</strong> l'air de la cavité est l'air du dehors et les verres sont aussi froids dedans que dehors. La rosée se dépose face aux lentilles. La brume et les embruns entrent par les ouvertures.</li>
+    <li><strong>A, cavité étanche :</strong> le dessiccant fixe le point de rosée intérieur très en dessous de 0&nbsp;°C. Aucune condensation tant qu'il n'est pas saturé.</li>
+    <li><strong>A, averse sur panneau chaud :</strong> si la plaque n'a pas été séchée (équilibre à 50&nbsp;% d'humidité), l'air du film à 45&nbsp;°C a un point de rosée de 32&nbsp;°C. Un verre brutalement refroidi à 20&nbsp;°C peut se voiler quelques minutes. Plaque séchée à 10&nbsp;% : point de rosée 6&nbsp;°C, aucun risque.</li>
+  </ul>
+</section>
+
+<section id="dessiccant">
+  <h2>L'eau à maîtriser est dans le plastique et dans le joint</h2>
+  <p>L'air enfermé ne contient que 0,02&nbsp;g d'eau. Le plastique en contient environ 77&nbsp;g, et le joint en laisse passer 1 à 24&nbsp;g par an selon le mastic. Le choix du joint décide de la durée de vie.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Réservoir</th><th scope="col">Calcul</th><th scope="col">Eau</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Air enfermé (films + cadre)</th><td>2,1&nbsp;L à 20&nbsp;°C et 50&nbsp;% d'humidité, soit 8,6&nbsp;g/m³</td><td>0,02&nbsp;g</td></tr>
+      <tr><th scope="row">Plaque de PMMA à l'équilibre avec un atelier à 50&nbsp;%</th><td>12,9&nbsp;kg × 0,6&nbsp;% (teneur typique, à confirmer)</td><td>77&nbsp;g</td></tr>
+      <tr><th scope="row">Plaque de PMMA saturée</th><td>12,9&nbsp;kg × 2,1&nbsp;%</td><td>270&nbsp;g</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>Le dessiccant du cadre ne sèche pas le centre de la plaque</h3>
+  <p>La vapeur doit diffuser sur 0,9&nbsp;m dans un film d'air de 0,15&nbsp;mm, alors que la plaque contient 29&nbsp;000 fois plus d'eau que ce film. Temps caractéristique :</p>
+  <div class="formule">\[\tau = \frac{4 L^2 R}{\pi^2 D_v} = \frac{4 \times 0{,}9^2 \times 29\,000}{\pi^2 \times 2{,}5 \cdot 10^{-5}} \approx 3{,}8 \cdot 10^{8} \ \mathrm{s} \approx 12 \ \mathrm{ans}\]</div>
+  <p>Il faut donc sécher la plaque avant montage. À travers ses 3&nbsp;mm, par les deux faces, \(\tau = e^2 / (\pi^2 D)\) vaut environ 3&nbsp;semaines à 23&nbsp;°C et 2&nbsp;jours à 60&nbsp;°C. Les coefficients de diffusion de l'eau dans le PMMA (5·10⁻¹³ et 5·10⁻¹²&nbsp;m²/s) sont des ordres de grandeur, à valider avec le fabricant du lenticulaire.</p>
+  <h3>Perméation du joint périphérique</h3>
+  <p>Flux annuel pour un joint de 7,6&nbsp;m de long, 4&nbsp;mm de haut et 10&nbsp;mm de profondeur :</p>
+  <div class="formule">\[\dot{m} = P \cdot A_j \cdot \frac{e_{ref}}{d} \cdot \frac{p_{v,site}}{p_{v,essai}} \cdot 365\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Mastic</th><th scope="col">Perméabilité \(P\) (g/m²·jour)</th><th scope="col">Eau entrante (g/an)</th><th scope="col">Durée de 500&nbsp;g de tamis 3A</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Butyle (PIB)</th><td>1 à 1,5</td><td>0,9 à 1,4</td><td>Plus de 60&nbsp;ans</td></tr>
+      <tr><th scope="row">Polyuréthane</th><td>3 à 4</td><td>2,8 à 3,8</td><td>24 à 33&nbsp;ans</td></tr>
+      <tr><th scope="row">Polysulfure</th><td>4 à 10</td><td>3,8 à 9,5</td><td>10 à 24&nbsp;ans</td></tr>
+      <tr><th scope="row">Silicone</th><td>15 à 25</td><td>14 à 24</td><td>4 à 7&nbsp;ans</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Hypothèses : perméabilités mesurées sur un film de 2&nbsp;mm, climat moyen de 11&nbsp;°C et 82&nbsp;% d'humidité (à confirmer sur les normales de l'IRM). Le tamis 3A retient 18,5&nbsp;% de sa masse, soit 92&nbsp;g d'eau pour 500&nbsp;g. Un joint EPDM serré à sec n'est pas une barrière : il laisse passer l'air.</p>
+  <h3>Respiration</h3>
+  <p>Une cavité qui chauffe de 25&nbsp;K veut gonfler de 8,5&nbsp;% :</p>
+  <div class="formule">\[\Delta V = V \, \frac{\Delta T}{T}, \qquad \Delta p = p \, \frac{\Delta T}{T} \ \text{si le volume est bloqué}\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Cavité</th><th scope="col">Volume d'air</th><th scope="col">Échange par cycle de 25&nbsp;K</th><th scope="col">Eau aspirée si elle respire</th><th scope="col">Effort si elle est étanche et rigide</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">A : films de contact</th><td>2,1&nbsp;L</td><td>0,18&nbsp;L</td><td>0,7&nbsp;g/an</td><td>Négligeable : les verres fléchissent de 0,03&nbsp;mm</td></tr>
+      <tr><th scope="row">Lames de 2&nbsp;×&nbsp;10&nbsp;mm fermées</th><td>72&nbsp;L</td><td>6,1&nbsp;L</td><td>24&nbsp;g/an</td><td>8,6&nbsp;kPa, soit 31&nbsp;kN sur le vitrage</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>La cavité mince est donc la seule qui puisse être fermée sans contrainte ni pompage d'humidité. Un espace de 10&nbsp;mm fermé cumule les défauts des deux solutions.</p>
+</section>
+
+<section id="uv">
+  <h2>Le film anti-UV est déjà dans le 44.2 : moins de 1&nbsp;% des UV atteignent le lenticulaire</h2>
+  <p>Un verre feuilleté 44.2 est fait de deux verres de 4&nbsp;mm collés par un intercalaire PVB de 0,76&nbsp;mm. C'est cet intercalaire qui arrête les UV. Le verre extra-clair seul, lui, en laisse passer 86&nbsp;%.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Vitrage</th><th scope="col">Transmission lumineuse</th><th scope="col">Transmission UV (280–380&nbsp;nm, EN&nbsp;410)</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Extra-clair monolithique 4&nbsp;mm (AGC Planibel Clearvision)</th><td>92&nbsp;%</td><td>86&nbsp;%</td></tr>
+      <tr><th scope="row">Extra-clair feuilleté 44.2 (AGC Stratobel Clearvision)</th><td>91&nbsp;%</td><td>0&nbsp;%</td></tr>
+      <tr><th scope="row">Clair feuilleté 44.2 (Saint-Gobain Stadip Protect), pour comparaison</th><td>89&nbsp;%</td><td>0,7&nbsp;%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>Ce que le soleil apporte en UV</h3>
+  <p>Les UV représentent 4,6&nbsp;% de l'énergie solaire au sol : 46&nbsp;W/m² sur 1&nbsp;000 dans le spectre de référence ASTM&nbsp;G173, dont 32 entre 280 et 380&nbsp;nm et 14 entre 380 et 400&nbsp;nm.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Face</th><th scope="col">Soleil au pic</th><th scope="col">UV au pic</th><th scope="col">Soleil annuel (estimation)</th><th scope="col">UV annuels incidents</th><th scope="col">UV 280–380&nbsp;nm transmis au lenticulaire</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Terre (sud-est)</th><td>684&nbsp;W/m²</td><td>32&nbsp;W/m²</td><td>≈&nbsp;900&nbsp;kWh/m²</td><td>≈&nbsp;41&nbsp;kWh/m²</td><td>moins de 0,2&nbsp;kWh/m²</td></tr>
+      <tr><th scope="row">Mer (nord-ouest)</th><td>512&nbsp;W/m²</td><td>24&nbsp;W/m²</td><td>≈&nbsp;400&nbsp;kWh/m²</td><td>≈&nbsp;18&nbsp;kWh/m²</td><td>moins de 0,1&nbsp;kWh/m²</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Les sommes annuelles sont des ordres de grandeur tirés du ciel clair calculé (1&nbsp;630 et 490&nbsp;kWh/m²) et d'un coefficient de nébulosité. Elles sont à confirmer sur PVGIS. La dernière colonne applique la transmission la moins favorable des deux fiches (0,7&nbsp;%).</p>
+  <h3>Bilan</h3>
+  <ul>
+    <li><strong>Les deux faces sont protégées,</strong> puisque les deux verres sont feuilletés. Les chants sont couverts par le châssis.</li>
+    <li><strong>Le bilan thermique ne change pas.</strong> Les UV arrêtés deviennent de la chaleur dans l'intercalaire. Elle est déjà comptée dans les 11&nbsp;% d'absorption du verre, déduits du facteur solaire mesuré.</li>
+    <li><strong>La bande de 380 à 400&nbsp;nm n'est pas chiffrée par les fiches.</strong> Elle pèse 30&nbsp;% de l'énergie UV. Kuraray indique qu'un PVB standard arrête presque tout jusqu'à environ 400&nbsp;nm. Il faut demander au verrier la courbe spectrale de son intercalaire.</li>
+    <li><strong>Un intercalaire à coupure garantie existe</strong> si la courbe ne suffit pas (Trosifol UV Extra Protect, annoncé comme arrêtant la totalité des UV). Son effet thermique est négligeable : moins de 1&nbsp;% d'absorption en plus.</li>
+    <li><strong>L'enjeu dépend de la matière.</strong> Un PMMA standard absorbe lui-même les UV et résiste bien au jaunissement. Un PETG ou un polystyrène y sont plus sensibles (appréciation générale, à vérifier sur la fiche du lenticulaire).</li>
+  </ul>
+</section>
+
+<section id="sel">
+  <h2>La cavité ventilée respire 90&nbsp;000 à 260&nbsp;000&nbsp;m³ d'air marin par an</h2>
+  <p>Cet air y amène 1 à 13&nbsp;g de sel. La part qui se dépose n'est pas calculable ici, mais la face lentilles ne se nettoie pas sans démontage.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Grandeur</th><th scope="col">Valeur</th><th scope="col">Origine</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Débit d'air dans les deux lames</th><td>10 à 30&nbsp;m³/h</td><td>Tirage et vent</td></tr>
+      <tr><th scope="row">Volume annuel</th><td>90&nbsp;000 à 260&nbsp;000&nbsp;m³</td><td>Débit × 8&nbsp;760&nbsp;h</td></tr>
+      <tr><th scope="row">Sel en suspension en front de mer</th><td>10 à 50&nbsp;µg/m³</td><td>Ordre de grandeur, approximatif</td></tr>
+      <tr><th scope="row">Sel traversant la cavité</th><td>1 à 13&nbsp;g/an</td><td>Produit des deux lignes précédentes</td></tr>
+      <tr><th scope="row">Surface intérieure exposée</th><td>14,4&nbsp;m²</td><td>4 faces de 3,6&nbsp;m²</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li>Le chlorure de sodium devient liquide au-dessus de 75&nbsp;% d'humidité (valeur de mémoire, approximative). Sur la côte, un dépôt salé reste donc humide la plupart des nuits, puis laisse des traces en séchant.</li>
+    <li>Une ouverture assez grande pour ventiler laisse aussi passer le sable soufflé au ras de la digue et les embruns.</li>
+    <li>Un sel ou une poussière qui s'accumule augmente l'absorption solaire, et B y est plus sensible que A.</li>
+  </ul>
+</section>
+
+<section id="dilatation">
+  <h2>Le PMMA se dilate huit fois plus que le verre</h2>
+  <p>L'écart atteint ±&nbsp;3,7&nbsp;mm sur 2&nbsp;m entre −10&nbsp;°C et +50&nbsp;°C. C'est la contrainte de conception la plus sévère du sandwich, devant la température.</p>
+  <div class="formule">\[\Delta L = \alpha \, L \, \Delta T\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Écart à la température de montage (20&nbsp;°C)</th><th scope="col">PMMA, sur 2&nbsp;m</th><th scope="col">Verre, sur 2&nbsp;m</th><th scope="col">Différentiel</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">+30&nbsp;K (panneau à 50&nbsp;°C)</th><td>+4,2&nbsp;mm</td><td>+0,5&nbsp;mm</td><td>+3,7&nbsp;mm</td></tr>
+      <tr><th scope="row">−30&nbsp;K (nuit à −10&nbsp;°C)</th><td>−4,2&nbsp;mm</td><td>−0,5&nbsp;mm</td><td>−3,7&nbsp;mm</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li>La plaque doit être suspendue en haut et libre ailleurs, avec au moins 5&nbsp;mm de jeu sur chaque bord. Pincée ou collée, elle gondole et l'effet lenticulaire se dégrade.</li>
+    <li>En hiver, une cavité parfaitement étanche se met en dépression (jusqu'à 10&nbsp;kPa pour −30&nbsp;K). Les verres se plaquent sur la plaque et freinent son retrait.</li>
+    <li>Un évent capillaire débouchant dans le dessiccant équilibre la pression. Il ne coûte que 0,7&nbsp;g d'eau par an.</li>
+  </ul>
+</section>
+
+<section id="recommandation">
+  <h2>Retenir le sandwich étanche, construit comme un vitrage isolant à lame très mince</h2>
+  <ol class="etapes">
+    <li><strong>Joint périphérique à barrière butyle (PIB),</strong> doublé d'un mastic de maintien. Ni silicone seul, ni joint EPDM à sec.</li>
+    <li><strong>Tamis moléculaire 3A,</strong> au moins 500&nbsp;g répartis dans le cadre, de préférence en cartouche remplaçable. Le gel de silice perd de sa capacité en chauffant et convient moins.</li>
+    <li><strong>Plaque étuvée avant montage,</strong> de l'ordre de 48&nbsp;h à 60&nbsp;°C, et assemblage en atelier sec.</li>
+    <li><strong>Plaque suspendue en haut, libre ailleurs,</strong> 5&nbsp;mm de jeu par bord, films d'air les plus minces possible.</li>
+    <li><strong>Évent capillaire d'équilibrage de pression,</strong> débouchant dans le dessiccant.</li>
+    <li><strong>Verres 44.2 extra-clairs feuilletés des deux côtés,</strong> avec la courbe UV de l'intercalaire fournie par le verrier.</li>
+    <li><strong>Maquette de 50&nbsp;×&nbsp;50&nbsp;cm</strong> avec sonde de température et d'humidité, exposée un mois sur site, avant de lancer la fabrication.</li>
+  </ol>
+  <h3>Points à confirmer, qui peuvent changer les chiffres</h3>
+  <ul class="a-confirmer">
+    <li>Matière et épaisseur exactes du lenticulaire. Un PETG ou un polystyrène tient moins bien la chaleur qu'un PMMA.</li>
+    <li>Azimut exact de la digue à l'emplacement de l'œuvre (56° retenu).</li>
+    <li>Référence du verre 44.2, ses valeurs EN&nbsp;410 et la courbe spectrale de son intercalaire.</li>
+    <li>Détail du cadre : type de joint, emplacement et masse du dessiccant.</li>
+    <li>Normales d'humidité et de vent de l'IRM pour la côte, et ensoleillement annuel sur PVGIS.</li>
+    <li>Focale des lentilles : vérifier qu'elle reste de l'ordre de l'épaisseur de la plaque, pour exclure toute concentration du soleil à distance.</li>
+  </ul>
+</section>
+
+<section id="donnees">
+  <h2>Données physiques et sources</h2>
+  <p>Hypothèse de base : lenticulaire en PMMA extrudé transparent de 3&nbsp;mm, sans impression, entre deux verres feuilletés 44.2 extra-clairs.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Grandeur</th><th scope="col">Valeur</th><th scope="col">Source</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Verre : conductivité \(\lambda\)</th><td>1,0&nbsp;W/m·K</td><td>EN&nbsp;572-1 (valeur normative usuelle)</td></tr>
+      <tr><th scope="row">Verre : masse volumique, chaleur massique</th><td>2&nbsp;500&nbsp;kg/m³ ; 720&nbsp;J/kg·K</td><td>EN&nbsp;572-1 (valeur normative usuelle)</td></tr>
+      <tr><th scope="row">Verre : émissivité, dilatation</th><td>0,837 ; 9·10⁻⁶&nbsp;K⁻¹</td><td>EN&nbsp;673, EN&nbsp;572-1 (valeurs usuelles)</td></tr>
+      <tr><th scope="row">Intercalaire PVB 0,76&nbsp;mm : \(\lambda\)</th><td>0,20&nbsp;W/m·K</td><td>Valeur usuelle, approximative</td></tr>
+      <tr><th scope="row">44.2 extra-clair : TL, facteur solaire \(g\), UV</th><td>91&nbsp;% ; 0,84 ; 0&nbsp;%</td><td><a href="https://www.agc-yourglass.com/sites/default/files/brochures/original/POCKET%20FRANCE%202018.pdf">AGC, Pocket France 2018</a></td></tr>
+      <tr><th scope="row">44.2 extra-clair : transmission, réflexion, absorption énergétiques</th><td>0,81 ; 0,08 ; 0,11</td><td>Déduites de \(g\) par la formule EN&nbsp;410 ci-dessous</td></tr>
+      <tr><th scope="row">PMMA extrudé : \(\lambda\), masse volumique, chaleur massique</th><td>0,19&nbsp;W/m·K ; 1&nbsp;190&nbsp;kg/m³ ; 1&nbsp;470&nbsp;J/kg·K</td><td><a href="https://www.voskunststoffen.nl/files/166151/datasheet%20plexiglas%20XT%20GS.pdf">Fiche PLEXIGLAS GS/XT</a></td></tr>
+      <tr><th scope="row">PMMA extrudé : dilatation</th><td>70·10⁻⁶&nbsp;K⁻¹</td><td>Fiche PLEXIGLAS GS/XT</td></tr>
+      <tr><th scope="row">PMMA extrudé : service permanent ; Vicat</th><td>70&nbsp;°C ; 103&nbsp;°C</td><td>Fiche PLEXIGLAS GS/XT</td></tr>
+      <tr><th scope="row">PMMA 3&nbsp;mm : TL, transmission énergétique totale \(g\)</th><td>92&nbsp;% ; 0,85</td><td>Fiche PLEXIGLAS GS/XT</td></tr>
+      <tr><th scope="row">PMMA 3&nbsp;mm : absorption énergétique</th><td>0,10</td><td>Déduite de \(g\) par la formule EN&nbsp;410</td></tr>
+      <tr><th scope="row">PMMA : reprise d'eau maximale</th><td>2,1&nbsp;% en masse</td><td>Fiche PLEXIGLAS GS/XT</td></tr>
+      <tr><th scope="row">Air à 40&nbsp;°C : \(\lambda\), \(\mu\), \(\rho\), \(c_p\)</th><td>0,0271&nbsp;W/m·K ; 1,91·10⁻⁵&nbsp;Pa·s ; 1,127&nbsp;kg/m³ ; 1&nbsp;007&nbsp;J/kg·K</td><td>Tables usuelles</td></tr>
+      <tr><th scope="row">Convection extérieure selon le vent</th><td>\(h = 4 + 4v\) (W/m²·K, \(v\) en m/s)</td><td>EN&nbsp;ISO&nbsp;6946 (valeur normative usuelle)</td></tr>
+      <tr><th scope="row">Vent moyen à Ostende, à 10&nbsp;m</th><td>17&nbsp;km/h en juillet ; 26&nbsp;km/h en janvier ; dominante ouest</td><td><a href="https://weatherspark.com/y/48792/Average-Weather-in-Ostend-Belgium-Year-Round">Weather Spark</a>, <a href="https://www.windfinder.com/windstatistics/oostende_pier">Windfinder</a></td></tr>
+      <tr><th scope="row">Vent à 2&nbsp;m de hauteur</th><td>0,8 × vent à 10&nbsp;m, soit 3,8&nbsp;m/s en juillet</td><td>Loi puissance, exposant 0,14</td></tr>
+      <tr><th scope="row">Soleil par ciel clair sur chaque face</th><td>Voir la section orientation</td><td>Calcul pvlib, modèle d'Ineichen</td></tr>
+      <tr><th scope="row">Part des UV dans le soleil</th><td>4,6&nbsp;% (280–400&nbsp;nm)</td><td>Spectre ASTM&nbsp;G173-03, intégré numériquement</td></tr>
+      <tr><th scope="row">Perméabilité à la vapeur des mastics</th><td>1 à 25&nbsp;g/m²·jour selon le mastic</td><td><a href="https://sweets.construction.com/swts_content_files/324/830181.pdf">Dow, Insulating Glass Technical Manual</a></td></tr>
+      <tr><th scope="row">Capacité du tamis moléculaire 3A</th><td>18,5&nbsp;% de sa masse</td><td><a href="https://oker-chemie.de/wp-content/uploads/2025/09/PI_SIO-12_MS-3A-engl.pdf">Oker-Chemie</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Absorption déduite du facteur solaire (EN&nbsp;410, coefficients d'échange 8 et 23&nbsp;W/m²·K) :</p>
+  <div class="formule">\[g = \tau_e + \alpha_e \, \frac{h_i}{h_i + h_e}, \qquad \tau_e + \rho_e + \alpha_e = 1 \;\Rightarrow\; \alpha_e = \frac{1 - \rho_e - g}{1 - \dfrac{h_i}{h_i + h_e}}\]</div>
+  <p>Contrôle de la méthode sur un 44.2 clair dont la fiche donne tout : transmission 75,8&nbsp;%, réflexion 7,1&nbsp;%, donc \(g\) calculé 0,802 pour 0,80 annoncé (<a href="https://static.coteverre.fr/document/stadip-protect-44.2-verre-feuillete-cote-verre.pdf">Stadip Protect 44.2</a>).</p>
+  <h3>Autres pages consultées le 9 octobre 2026</h3>
+  <ul>
+    <li><a href="https://nrel.gov/docs/fy11osti/47706.pdf">NREL, moisture ingress in edge seals</a> : le PIB est la meilleure barrière, le silicone la moins bonne.</li>
+    <li><a href="https://www.sorbentsystems.com/desiccants_charts.html">Sorbent Systems</a> : tenue en température des dessiccants.</li>
+    <li><a href="https://www.glassonline.com/trosifol-uv-exploits-the-entire-spectrum-of-sunlight/">Glass Online, Trosifol UV</a> : le PVB standard arrête presque tous les UV jusqu'à environ 400&nbsp;nm.</li>
+    <li><a href="https://www.trosifol.com/applications-products/products/trosifol-uv-extra-protect">Kuraray, Trosifol UV Extra Protect</a> : intercalaire anti-UV renforcé.</li>
+  </ul>
+  <p>Citées de mémoire, non rouvertes : EN&nbsp;572-1, EN&nbsp;673, EN&nbsp;410, EN&nbsp;ISO&nbsp;6946, formule de Magnus (OMM), émissivité du ciel clair de Berdahl et Martin (1984). Leurs valeurs sont à tenir pour approximatives tant qu'elles n'ont pas été recoupées.</p>
+  <p>Les scripts de calcul (bilan nodal, marche le long de la lame d'air, soleil par face, point de rosée) sont dans le dossier <code>calcul/</code> du dépôt.</p>
+</section>
+
+</article>
+</div>
+</main>
+
+<footer class="pied">
+  <p>Note de calcul établie le 9 octobre 2026 pour la vitrine lenticulaire des Veilleurs. Modèle en régime établi, précision estimée à ±&nbsp;3&nbsp;K. À valider par une maquette instrumentée avant fabrication.</p>
+</footer>
+
+<div id="bulle" class="bulle" role="status" hidden></div>
+
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"></script>
+<script defer src="assets/app.js"></script>
+</body>
+</html>
