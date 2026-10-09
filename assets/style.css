@@ -221,3 +221,10 @@ summary { cursor: pointer; font-weight: 600; padding: 0.3rem 0; }
 .conclusion td[colspan] { background: none; }
 .conclusion td:last-child { color: var(--encre-2); }
 .conclusion thead th:last-child { padding-left: 0.9rem; }
+
+/* Sélecteur de langue */
+.langues { display: flex; gap: 0.15rem; margin-left: auto; font-weight: 600; }
+.langues a { text-decoration: none; padding: 0.15rem 0.5rem; color: var(--encre-2); border: 1px solid transparent; }
+.langues a:hover { color: var(--encre); border-color: var(--trait); }
+.langues a[aria-current="true"] { color: var(--papier); background: var(--encre); }
+.bandeau-date { margin-left: 1.25rem; }

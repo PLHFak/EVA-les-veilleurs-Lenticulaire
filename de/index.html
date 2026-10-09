@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Les Veilleurs, Lentikular-Vitrine: Berechnungsnotiz</title>
+<meta name="description" content="Berechnungsnotiz zu Wärme, Feuchte und UV für die Lentikular-Vitrine von 2 × 1,8 m auf dem Seedeich von Lombardsijde.">
+<link rel="stylesheet" href="/assets/katex/katex.min.css">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="bandeau">
+  <a class="bandeau-titre" href="#haut">Les Veilleurs, Lentikular-Vitrine</a>
+  <nav class="langues" aria-label="Sprache"><a href="/" hreflang="fr" lang="fr">FR</a><a href="/de/" hreflang="de" lang="de" aria-current="true">DE</a><a href="/en/" hreflang="en" lang="en">EN</a></nav>
+  <span class="bandeau-date">Berechnungsnotiz vom 9. Oktober 2026</span>
+</header>
+
+<main id="haut">
+
+<section class="ouverture">
+  <div class="ouverture-texte">
+    <h1>Lentikularplatte zwischen zwei Gläsern: rechnerisch 45&nbsp;°C bei 35&nbsp;°C Luft</h1>
+    <p class="chapeau">Diese Notiz schätzt rechnerisch die Temperatur einer transparenten Lentikularplatte von 2&nbsp;×&nbsp;1,8&nbsp;m ab, die zwischen zwei Gläsern auf dem Seedeich von Lombardsijde steht. Für einen Tag mit 35&nbsp;°C ohne Wind ergibt das Modell 45&nbsp;°C im dichten Verbund (Sandwich) und 47&nbsp;°C mit hinterlüfteten Luftspalten. Die Dauergebrauchstemperatur von extrudiertem PMMA liegt bei 70&nbsp;°C.</p>
+    <p class="chapeau">Die Befürchtung einer Überhitzung bestätigt sich für eine bedruckte Lentikularplatte: Mit einem dunklen Bild ergibt dasselbe Modell 70 bis 105&nbsp;°C. Unbedruckt ist die absorbierte Energie etwa siebenmal geringer. Diese Ergebnisse bleiben eine Abschätzung, zu bestätigen durch ein instrumentiertes Muster (Mock-up).</p>
+    <p class="ouverture-liens"><a href="#conclusion">Zum Fazit</a><a href="#comparaison">Beide Lösungen vergleichen</a></p>
+  </div>
+
+  <figure class="boussole" aria-labelledby="boussole-titre">
+    <figcaption id="boussole-titre">Die Scheibe im Verlauf eines Hitzetages, am 20. Juli</figcaption>
+    <svg id="boussole-svg" viewBox="0 0 420 420" role="img" aria-label="Draufsicht: der Deich, das Meer im Nordwesten, das Land im Südosten, die Scheibe parallel zum Deich und die Sonnenbahn"></svg>
+    <div class="boussole-commande">
+      <label for="heure">Sommerzeit <output id="heure-lue" for="heure">13:00 Uhr</output></label>
+      <input id="heure" type="range" min="0" max="35" step="1" value="16">
+      <fieldset class="vent-choix">
+        <legend>Wind</legend>
+        <label><input type="radio" name="vent" value="0" checked> ohne Wind</label>
+        <label><input type="radio" name="vent" value="2"> 2&nbsp;m/s</label>
+      </fieldset>
+    </div>
+    <dl class="boussole-lecture">
+      <div><dt>Sonne, Landseite</dt><dd id="l-terre">631 W/m²</dd></div>
+      <div><dt>Sonne, Seeseite</dt><dd id="l-mer">122 W/m²</dd></div>
+      <div><dt>Luft</dt><dd id="l-air">32,3 °C</dd></div>
+      <div class="serie-a"><dt>Lentikular, Verbund A</dt><dd id="l-a">44,5 °C</dd></div>
+      <div class="serie-b"><dt>Lentikular, Luftspalte B</dt><dd id="l-b">47,1 °C</dd></div>
+    </dl>
+  </figure>
+</section>
+
+<div class="corps">
+
+<nav class="sommaire" aria-label="Inhalt">
+  <ol>
+    <li><a href="#comparaison">Vergleich</a></li>
+    <li><a href="#coupe">Beide Lösungen im Schnitt</a></li>
+    <li><a href="#orientation">Ausrichtung, Sonne und Wind</a></li>
+    <li><a href="#energie">Absorbierte Energie</a></li>
+    <li><a href="#temperatures">Temperaturen</a></li>
+    <li><a href="#ventilation">Natürliche Lüftung</a></li>
+    <li><a href="#rosee">Taupunkt</a></li>
+    <li><a href="#dessiccant">Feuchte und Trockenmittel</a></li>
+    <li><a href="#uv">UV-Bilanz</a></li>
+    <li><a href="#sel">Meersalz</a></li>
+    <li><a href="#dilatation">Wärmeausdehnung und Druck</a></li>
+    <li><a href="#recommandation">Bevorzugter Ansatz</a></li>
+    <li><a href="#conclusion">Fazit</a></li>
+    <li><a href="#donnees">Anhang: Daten und Quellen</a></li>
+  </ol>
+</nav>
+
+<article class="note">
+
+<section id="comparaison">
+  <h2>Vergleich der beiden Lösungen, Kriterium für Kriterium</h2>
+  <p>In dieser Abschätzung schneidet der dichte Verbund bei den meisten Kriterien besser ab, er hängt aber vollständig von der Qualität seines Randverbunds ab. Die Temperaturen sind für zwei Fälle angegeben: den realen Tag am Standort (Hitzetag mit 35&nbsp;°C, Ausrichtung des Deichs) und einen strengeren Hüllfall (800&nbsp;W/m² gleichzeitig mit 35&nbsp;°C).</p>
+  <div class="defile">
+  <table class="deux-vitres">
+    <thead>
+      <tr><th scope="col">Kriterium</th><th scope="col" class="col-a">A. Dichter Verbund + Trockenmittel</th><th scope="col" class="col-b">B. Hinterlüftete Luftspalte 2&nbsp;×&nbsp;10&nbsp;mm</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Lentikularplatte, realer Tag, ohne Wind</th><td>45&nbsp;°C</td><td>47&nbsp;°C</td></tr>
+      <tr><th scope="row">Lentikularplatte, realer Tag, Wind 2&nbsp;m/s</th><td>40&nbsp;°C</td><td>42&nbsp;°C</td></tr>
+      <tr><th scope="row">Lentikularplatte, Hüllfall, ohne Wind</th><td>49&nbsp;°C</td><td>52&nbsp;°C</td></tr>
+      <tr><th scope="row">Abstand zu 70&nbsp;°C im ungünstigsten Fall</th><td>21&nbsp;K</td><td>18&nbsp;K</td></tr>
+      <tr><th scope="row">Über die Luft im Hohlraum abgeführte Wärme</th><td>0&nbsp;%: alles geht über die Gläser</td><td>5 bis 8&nbsp;%</td></tr>
+      <tr><th scope="row">Verschmutzte Lentikularplatte (Absorption 20&nbsp;%), Hüllfall</th><td>54&nbsp;°C</td><td>59&nbsp;°C</td></tr>
+      <tr><th scope="row">Kondensation im Inneren</th><td>Nicht zu erwarten, solange das Trockenmittel nicht gesättigt ist</td><td>Zu erwarten in klaren, windarmen Nächten und bei Nebel</td></tr>
+      <tr><th scope="row">Salz und Sand im Hohlraum</th><td>Keine</td><td>1 bis 13&nbsp;g Salz pro Jahr durchströmen den Hohlraum</td></tr>
+      <tr><th scope="row">UV-Strahlung auf der Lentikularplatte</th><td colspan="2">Weniger als 1&nbsp;% in beiden Fällen, laut Datenblättern der Verbundsicherheitsgläser (VSG)</td></tr>
+      <tr><th scope="row">Wartung im Inneren</th><td>Keine</td><td>Demontage zum Reinigen der Linsenseite</td></tr>
+      <tr><th scope="row">Hauptrisiko</th><td>Versagender Randverbund: dauerhafter Beschlag, nicht entwässerbar</td><td>Salzschleier und Wasserspuren zwischen den Gläsern</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Nach dieser Berechnung ändert die Hinterlüftung die Temperatur einer unbedruckten Lentikularplatte kaum, und sie setzt den Hohlraum Tau und Salz aus. Mit einem aufgedruckten Bild wäre der Unterschied zwischen den beiden Lösungen größer: siehe Fazit.</p>
+</section>
+
+<section id="coupe">
+  <h2>Wohin die Wärme in jeder Lösung fließt</h2>
+  <figure class="large">
+    <svg viewBox="0 0 760 470" role="img" aria-label="Vertikalschnitte der beiden Lösungen: dichter Verbund links, hinterlüftete Luftspalte rechts" class="coupe">
+      <defs>
+        <marker id="m-soleil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#C99200"/></marker>
+        <marker id="m-chaud" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#C2412D"/></marker>
+        <marker id="m-air" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#48626B"/></marker>
+        <pattern id="lentilles" width="6" height="10" patternUnits="userSpaceOnUse"><path d="M3 0a5.67 5.67 0 0 0 0 10" fill="none" stroke="#0B7FA0" stroke-width="1.2"/></pattern>
+      </defs>
+
+      <g class="legende">
+        <rect x="24" y="14" width="14" height="14" class="f-verre"/><text x="44" y="25">Glas 44.2</text>
+        <rect x="128" y="14" width="14" height="14" class="f-lent"/><text x="148" y="25">Lentikular 3 mm</text>
+        <line x1="272" x2="300" y1="21" y2="21" class="l-soleil" marker-end="url(#m-soleil)"/><text x="308" y="25">Sonne</text>
+        <line x1="366" x2="394" y1="21" y2="21" class="l-chaud" marker-end="url(#m-chaud)"/><text x="402" y="25">Abgeführte Wärme</text>
+        <line x1="520" x2="548" y1="21" y2="21" class="l-air" marker-end="url(#m-air)"/><text x="556" y="25">Luft</text>
+        <circle cx="604" cy="21" r="2.5" class="p-dess"/><circle cx="612" cy="21" r="2.5" class="p-dess"/><text x="622" y="25">Trockenmittel</text>
+      </g>
+
+      <g>
+        <rect x="24" y="46" width="344" height="400" class="cadre-a"/>
+        <text x="40" y="72" class="nom">A. Dichter Verbund + Trockenmittel</text>
+        <rect x="86" y="100" width="98" height="18" class="chassis"/>
+        <g class="p-dess"><circle cx="96" cy="109" r="2.5"/><circle cx="106" cy="109" r="2.5"/><circle cx="116" cy="109" r="2.5"/><circle cx="126" cy="109" r="2.5"/><circle cx="136" cy="109" r="2.5"/><circle cx="146" cy="109" r="2.5"/><circle cx="156" cy="109" r="2.5"/><circle cx="166" cy="109" r="2.5"/><circle cx="176" cy="109" r="2.5"/></g>
+        <rect x="86" y="368" width="98" height="18" class="chassis"/>
+        <rect x="96" y="118" width="28" height="250" class="f-verre"/>
+        <rect x="124" y="118" width="6" height="250" fill="url(#lentilles)"/>
+        <rect x="127" y="118" width="16" height="250" class="f-lent"/>
+        <rect x="146" y="118" width="28" height="250" class="f-verre"/>
+        <line x1="40" x2="92" y1="158" y2="158" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="40" x2="92" y1="183" y2="183" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="40" x2="92" y1="208" y2="208" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="92" x2="44" y1="313" y2="313" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="92" x2="44" y1="338" y2="338" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="178" x2="226" y1="313" y2="313" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="178" x2="226" y1="338" y2="338" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <text x="196" y="113">Trockenmittel im Rahmen</text>
+        <text x="196" y="146">Luftfilme von 0,2 mm:</text>
+        <text x="196" y="162">alles liegt in Kontakt</text>
+        <text x="196" y="196" class="chiffre">45 °C ohne Wind</text>
+        <text x="196" y="214" class="fort">40 °C bei 2 m/s</text>
+        <text x="196" y="246">Hohlraum dicht: kein Salz,</text>
+        <text x="196" y="262">kein Beschlag, solange</text>
+        <text x="196" y="278">das Trockenmittel wirkt</text>
+        <text x="234" y="317">Wärmeleitung im</text>
+        <text x="234" y="333">Glas, dann Wind und</text>
+        <text x="234" y="349">Strahlung</text>
+        <text x="40" y="426">Randverbund mit Butyl-Sperre (PIB)</text>
+      </g>
+
+      <g>
+        <rect x="392" y="46" width="344" height="400" class="cadre-b"/>
+        <text x="408" y="72" class="nom">B. Hinterlüftete Luftspalte 2 × 10 mm</text>
+        <rect x="440" y="92" width="140" height="8" class="f-verre"/>
+        <rect x="442" y="368" width="44" height="14" class="chassis"/>
+        <rect x="496" y="368" width="28" height="14" class="chassis"/>
+        <rect x="534" y="368" width="44" height="14" class="chassis"/>
+        <rect x="452" y="118" width="28" height="250" class="f-verre"/>
+        <rect x="499" y="118" width="6" height="250" fill="url(#lentilles)"/>
+        <rect x="502" y="118" width="16" height="250" class="f-lent"/>
+        <rect x="540" y="118" width="28" height="250" class="f-verre"/>
+        <path d="M491 406V109H434" class="l-air" marker-end="url(#m-air)"/>
+        <path d="M529 406V109H586" class="l-air" marker-end="url(#m-air)"/>
+        <line x1="408" x2="448" y1="158" y2="158" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="408" x2="448" y1="183" y2="183" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="408" x2="448" y1="208" y2="208" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="448" x2="410" y1="313" y2="313" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="448" x2="410" y1="338" y2="338" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="572" x2="610" y1="313" y2="313" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="572" x2="610" y1="338" y2="338" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <text x="594" y="99">Austritt unter Dach</text>
+        <text x="594" y="146">Die Luft führt nur</text>
+        <text x="594" y="162">5 bis 8 % der Wärme ab</text>
+        <text x="594" y="196" class="chiffre">47 °C ohne Wind</text>
+        <text x="594" y="214" class="fort">42 °C bei 2 m/s</text>
+        <text x="594" y="246">Seeluft im Hohlraum:</text>
+        <text x="594" y="262">Salz, Sand,</text>
+        <text x="594" y="278">nachts Tau</text>
+        <text x="408" y="426">Kleine Zuluftöffnungen unten: 9 bis 14 m³/h</text>
+      </g>
+    </svg>
+    <figcaption>Schematische Vertikalschnitte, Dicken nicht maßstäblich. Temperaturen des realen Tages bei 35&nbsp;°C.</figcaption>
+  </figure>
+  <p>In A berührt die Lentikularplatte beide Gläser. Ihre Wärme geht durch Wärmeleitung in das Glas über, das der Wind auf 7,2&nbsp;m² kühlt. In B isoliert die Luft im Spalt die Lentikularplatte von den Gläsern und tauscht fast nichts aus.</p>
+</section>
+
+<section id="orientation">
+  <h2>Ausrichtung: Sonne und Wind, für den Standort berechnet</h2>
+  <p>Der Deich folgt der Küstenlinie, die um 56° gegen Nord gedreht ist (Azimut berechnet auf der Linie Nieuwpoort–Ostende, am Plan zu bestätigen). Die Scheibe steht parallel dazu: Eine Seite blickt landwärts nach Südosten (146°), die andere seewärts nach Nordwesten (326°). Lage des Standorts: 51,17357°&nbsp;N, 2,78028°&nbsp;E.</p>
+  <figure class="large">
+    <div id="g-jour" class="graphe"></div>
+    <figcaption>Klarer Himmel, berechnet für den 20. Juli (Ineichen-Modell, Linke-Trübung 3, Albedo 0,25). Luft von 21&nbsp;°C um 6&nbsp;Uhr bis 35&nbsp;°C um 16:30&nbsp;Uhr. Ohne Wind.</figcaption>
+    <details><summary>Werte Stunde für Stunde anzeigen</summary><div class="defile" id="t-jour"></div></details>
+  </figure>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Zeitpunkt</th><th scope="col">Empfangene Sonnenstrahlung</th><th scope="col">Luft</th><th scope="col">Lentikular A</th><th scope="col">Lentikular B</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">11:30&nbsp;Uhr, Maximum auf der Landseite</th><td>684&nbsp;W/m²</td><td>29,8&nbsp;°C</td><td>42,8&nbsp;°C</td><td>45,6&nbsp;°C</td></tr>
+      <tr><th scope="row">13&nbsp;Uhr, Lentikularplatte am wärmsten</th><td>631&nbsp;W/m²</td><td>32,3&nbsp;°C</td><td>44,5&nbsp;°C</td><td>47,1&nbsp;°C</td></tr>
+      <tr><th scope="row">16:30&nbsp;Uhr, Luft am wärmsten</th><td>106 und 139&nbsp;W/m² je Seite</td><td>35,0&nbsp;°C</td><td>39,0&nbsp;°C</td><td>39,9&nbsp;°C</td></tr>
+      <tr><th scope="row">19:30&nbsp;Uhr, Maximum auf der Seeseite</th><td>512&nbsp;W/m²</td><td>32,9&nbsp;°C</td><td>42,1&nbsp;°C</td><td>44,1&nbsp;°C</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li><strong>Sonnenspitze und Wärmespitze fallen nicht zusammen.</strong> Um 16:30&nbsp;Uhr steht die Sonne bei Azimut 239°, fast in der Achse des Deichs (236°). Sie streift beide Seiten.</li>
+    <li><strong>Die Landseite empfängt im September am meisten</strong> (820&nbsp;W/m², Sonne tiefer), aber die Luft ist kühler: 40&nbsp;°C an der Lentikularplatte bei 25&nbsp;°C Luft.</li>
+    <li><strong>Der vorherrschende Wind streicht an der Scheibe entlang.</strong> Er kommt aus Westen (263°), nur 27° gegen die Scheibenebene, und überstreicht beide Seiten.</li>
+    <li><strong>Bei Hitze steht der Wind oft senkrecht zur Scheibe</strong> (Landwind oder Seebrise): Eine Seite liegt im Windschatten. Wird ihr konvektiver Austausch um ein Drittel verringert, wird die Lentikularplatte um 1&nbsp;K wärmer.</li>
+  </ul>
+</section>
+
+<section id="energie">
+  <h2>Absorbierte Sonnenenergie: rund 0,8&nbsp;kW für das Paneel abgeschätzt</h2>
+  <p>Nach der Berechnung geht mehr als die Hälfte der Sonnenstrahlung durch die Vitrine hindurch und tritt wieder aus, und die Lentikularplatte absorbiert ein Drittel des Rests. Jede Schicht \(k\) (vorderes Glas, Lentikularplatte, hinteres Glas) transmittiert, reflektiert und absorbiert. Die Flüsse nach hinten \(F\) und nach vorn \(B\) werden mit den Mehrfachreflexionen berechnet:</p>
+  <div class="formule">\[F_k = \tau_k F_{k-1} + \rho_k B_k, \qquad B_{k-1} = \rho_k F_{k-1} + \tau_k B_k, \qquad F_0 = G, \quad B_3 = G_{arr}\]</div>
+  <div class="formule">\[S_k = \alpha_k \left( F_{k-1} + B_k \right)\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Fluss (W/m²)</th><th scope="col">Realer Tag, 13&nbsp;Uhr</th><th scope="col">Hüllfall</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Sonne auf der Vorderseite \(G\)</th><td>631</td><td>800</td></tr>
+      <tr><th scope="row">Sonne auf der Rückseite \(G_{arr}\)</th><td>122</td><td>100</td></tr>
+      <tr><th scope="row">Vom vorderen Glas absorbiert</th><td>86</td><td>105</td></tr>
+      <tr><th scope="row">Von der Lentikularplatte absorbiert</th><td>66</td><td>79</td></tr>
+      <tr><th scope="row">Vom hinteren Glas absorbiert</th><td>62</td><td>72</td></tr>
+      <tr><th scope="row">Insgesamt absorbiert</th><td>214</td><td>255</td></tr>
+      <tr><th scope="row">Von den 3,6&nbsp;m² absorbierte Leistung</th><td>769&nbsp;W</td><td>919&nbsp;W</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Mit einem dunkel bedruckten Bild würde die Lentikularplatte etwa 590&nbsp;W/m² statt 79 absorbieren. Dieser siebenmal stärker belastete Fall führt zu den genannten 80&nbsp;°C: Die Befürchtung ist für eine bedruckte Lentikularplatte begründet. Die hier zugrunde gelegte Annahme ist eine unbedruckte Lentikularplatte.</p>
+</section>
+
+<section id="temperatures">
+  <h2>Berechnete Temperaturen: 40 bis 52&nbsp;°C je nach Fall</h2>
+  <figure class="large">
+    <div id="g-temp" class="graphe"></div>
+    <figcaption>Temperatur der Lentikularplatte am oberen Rand des Paneels. Realer Tag: Tagesmaximum am 20. Juli. Hüllfall: 800&nbsp;W/m² und 35&nbsp;°C gleichzeitig. Zuluftöffnungen von B mit 20&nbsp;% des Querschnitts.</figcaption>
+  </figure>
+  <h3>Bilanz im stationären Zustand</h3>
+  <p>Jede Schicht erhält ihren absorbierten Fluss \(S\) und tauscht ihn mit ihren Nachbarn aus. An jeder Außenseite: Konvektion durch den Wind \(v\) und Strahlung an die Umgebung (Temperaturen in Kelvin):</p>
+  <div class="formule">\[q_{ext} = h_c \,(T_s - T_a) + \varepsilon \sigma \left( T_s^4 - T_a^4 \right), \qquad h_c = 4 + 4v\]</div>
+  <p>Zwischen der Lentikularplatte und jedem Glas: Wärmeleitung in der Luftschicht der Dicke \(\delta\) und Strahlung parallel dazu:</p>
+  <div class="formule">\[h_{air} = \frac{\lambda_{air}}{\delta} + h_r, \qquad h_r = \frac{4 \sigma T_m^3}{\dfrac{1}{\varepsilon_1} + \dfrac{1}{\varepsilon_2} - 1} \approx 6{,}5 \ \mathrm{W/m^2K}\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Wärmewiderstand</th><th scope="col">Berechnung</th><th scope="col">m²·K/W</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Glas 44.2</th><td>0,008 / 1,0 + 0,00076 / 0,20</td><td>0,012</td></tr>
+      <tr><th scope="row">Lentikularplatte PMMA 3&nbsp;mm</th><td>0,003 / 0,19</td><td>0,016</td></tr>
+      <tr><th scope="row">A: Luftfilm von 0,15&nbsp;mm</th><td>1 / (0,0271 / 0,00015 + 6,5)</td><td>0,005</td></tr>
+      <tr><th scope="row">B: ruhender Luftspalt von 10&nbsp;mm</th><td>1 / (0,0271 / 0,010 + 6,5)</td><td>0,109</td></tr>
+      <tr><th scope="row">Außenseite ohne Wind</th><td>1 / (4 + 6,3)</td><td>0,097</td></tr>
+      <tr><th scope="row">Außenseite, Wind 4&nbsp;m/s</th><td>1 / (20 + 6,3)</td><td>0,038</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>In diesem Modell isoliert der Luftspalt von 10&nbsp;mm zwanzigmal stärker als der Kontaktfilm. In A dominiert der Widerstand der Außenseiten, den der Wind durch 2,5 teilt.</p>
+  <p>Handkontrolle für A im Hüllfall, ohne Wind, wobei die gesamte Wärme über die beiden Außenseiten abgeht:</p>
+  <div class="formule">\[\Delta T \approx \frac{S_{total}}{2\,(h_c + h_r)} = \frac{255}{2 \times (4 + 6{,}3)} = 12{,}4 \ \mathrm{K} \;\Rightarrow\; T \approx 47 \ ^\circ\mathrm{C}\]</div>
+  <p>Das vollständige Modell ergibt 49&nbsp;°C an der Lentikularplatte, bei 48&nbsp;°C an den Gläsern. Geschätzte Genauigkeit: ±&nbsp;3&nbsp;K.</p>
+  <h3>Trägheit und Empfindlichkeit</h3>
+  <p>Das Paneel wiegt 157&nbsp;kg (144&nbsp;kg Glas, 13&nbsp;kg PMMA) und speichert 123&nbsp;kJ/K. Seine Zeitkonstante beträgt 30&nbsp;min ohne Wind und 11&nbsp;min bei 4&nbsp;m/s: Das Gleichgewicht ist in weniger als einer Stunde erreicht, die Trägheit reicht also nicht aus, um die Spitze zu kappen.</p>
+  <p>Würde die Lentikularplatte 20&nbsp;% der Sonnenstrahlung absorbieren (Verschmutzung, Vergilbung, getönte Folie), erreichte sie im Hüllfall 54&nbsp;°C in A und 59&nbsp;°C in B. Bei 40&nbsp;%: 62&nbsp;°C in A und 72&nbsp;°C in B. Ein Luftspiel von 1&nbsp;mm je Seite in A kostet 1&nbsp;K.</p>
+</section>
+
+<section id="ventilation">
+  <h2>Natürliche Lüftung: Anteil der abgeführten Wärme auf 5–8&nbsp;% abgeschätzt</h2>
+  <p>In einem Spalt von 10&nbsp;mm bewegt der berechnete thermische Auftrieb 9 bis 14&nbsp;m³/h. Die Luft nimmt schon auf den ersten 15 Zentimetern die Temperatur der Wände an und steigt dann weiter auf, ohne noch Wärme abzuführen.</p>
+  <p>Antrieb ist der Dichteunterschied zwischen der Luft im Spalt und der Außenluft, vom Wind unterstützt oder gehemmt:</p>
+  <div class="formule">\[\Delta p_{tirage} = \rho \, g \, H \, \frac{\bar{T}_{lame} - T_a}{\bar{T}_{lame}}, \qquad \Delta p_{vent} = \Delta C_p \, \frac{\rho v^2}{2}\]</div>
+  <p>Er wird aufgezehrt durch die laminare Reibung zwischen zwei Ebenen im Abstand \(b\) und durch die Ein- und Austrittsöffnungen mit dem relativen Querschnitt \(\varphi\):</p>
+  <div class="formule">\[\Delta p_{frottement} = \frac{12 \, \mu \, H \, u}{b^2}, \qquad \Delta p_{orifices} = \frac{\rho u^2}{2} \left[ \frac{1}{(C_d \varphi_e)^2} + \frac{1}{(C_d \varphi_s)^2} \right]\]</div>
+  <p>Austausch zwischen Luft und Wänden sowie Höhe, nach der die Luft thermisch gesättigt ist:</p>
+  <div class="formule">\[h_{lame} = \frac{Nu \, \lambda_{air}}{2b} = \frac{7{,}54 \times 0{,}0271}{0{,}020} = 10{,}2 \ \mathrm{W/m^2K}, \qquad z^* = \frac{\rho \, u \, b \, c_p}{2 \, h_{lame}} \approx 5{,}5 \ \mathrm{cm}\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Hüllfall, H = 1,8&nbsp;m, b = 10&nbsp;mm, Zuluftöffnungen mit 20&nbsp;% des Querschnitts</th><th scope="col">Ohne Wind</th><th scope="col">Wind 4&nbsp;m/s</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Verfügbarer thermischer Auftrieb</th><td>0,7 bis 0,85&nbsp;Pa</td><td>0,4 bis 0,5&nbsp;Pa</td></tr>
+      <tr><th scope="row">Luftgeschwindigkeit im Spalt</th><td>0,09 bis 0,10&nbsp;m/s</td><td>0,06 bis 0,07&nbsp;m/s</td></tr>
+      <tr><th scope="row">Gesamter Volumenstrom beider Spalte</th><td>12 bis 14&nbsp;m³/h</td><td>8 bis 9&nbsp;m³/h</td></tr>
+      <tr><th scope="row">Von der Luft abgeführte Wärme</th><td>13 bis 19&nbsp;W/m²</td><td>4 bis 6&nbsp;W/m²</td></tr>
+      <tr><th scope="row">Reynolds-Zahl</th><td>120, laminar</td><td>80, laminar</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Mit Schlitzen, die über die ganze Breite offen sind, steigt die Geschwindigkeit auf 0,14–0,17&nbsp;m/s, und die Temperatur am oberen Rand des Paneels ändert sich nicht. Fügt der Wind eine Druckdifferenz hinzu (\(\Delta C_p = 0{,}3\) bei 4&nbsp;m/s), erreicht der Volumenstrom 30&nbsp;m³/h, weiterhin ohne Wirkung auf die Höchsttemperatur. In dieser Berechnung kühlt der Wind das Paneel vor allem über seine Außenseiten.</p>
+</section>
+
+<section id="rosee">
+  <h2>Taupunkt: berechnete Schwelle zwischen 76 und 94&nbsp;% Feuchte</h2>
+  <p>Für eine klare Nacht ergibt die Berechnung ein Glas, das 1 bis 4&nbsp;K kälter ist als die Luft. In B kann sich Tau dann auch innen bilden, auf der Linsenseite. In A ist das Trockenmittel dazu da, das zu verhindern.</p>
+  <figure class="large">
+    <div id="g-rosee" class="graphe"></div>
+    <figcaption>Relative Feuchte, ab der das Glas unter den Taupunkt fällt, in klarer Nacht, für eine senkrechte Fläche.</figcaption>
+  </figure>
+  <h3>Taupunkt</h3>
+  <p>Magnus-Formel, \(T\) in °C, relative Feuchte \(HR\) zwischen 0 und 1:</p>
+  <div class="formule">\[p_{sat}(T) = 611{,}2 \, \exp\!\left( \frac{17{,}62 \, T}{243{,}12 + T} \right) \ \mathrm{Pa}\]</div>
+  <div class="formule">\[T_r = \frac{243{,}12 \, \gamma}{17{,}62 - \gamma}, \qquad \gamma = \ln(HR) + \frac{17{,}62 \, T}{243{,}12 + T}\]</div>
+  <p>Bei 15&nbsp;°C und 90&nbsp;% Feuchte liegt der Taupunkt bei 13,4&nbsp;°C: Es genügt, dass das Glas 1,6&nbsp;K kälter ist als die Luft.</p>
+  <h3>Temperatur des Glases in der Nacht</h3>
+  <p>Eine senkrechte Fläche sieht zur Hälfte den Himmel und zur Hälfte den Boden. Sie verliert durch Strahlung an den klaren Himmel, was Luft und Boden ihr zurückgeben (Temperaturen in Kelvin, Taupunkt \(T_r\) in °C in der Emissivität des Himmels):</p>
+  <div class="formule">\[h_c \,(T_a - T_s) + \tfrac{1}{2} \varepsilon \sigma \left( T_a^4 - T_s^4 \right) = \tfrac{1}{2} \varepsilon \sigma \left( T_s^4 - T_{ciel}^4 \right)\]</div>
+  <div class="formule">\[T_{ciel} = T_a \, \varepsilon_{ciel}^{1/4}, \qquad \varepsilon_{ciel} = 0{,}711 + 0{,}56 \, \frac{T_r}{100} + 0{,}73 \left( \frac{T_r}{100} \right)^2\]</div>
+  <p>In einer Nacht mit 15&nbsp;°C und 85&nbsp;% Feuchte strahlt der klare Himmel wie ein Körper von −1&nbsp;°C. Das Glas sinkt auf 11,0&nbsp;°C ohne Wind und auf 13,6&nbsp;°C bei 4&nbsp;m/s.</p>
+  <h3>Folgen für jede Lösung</h3>
+  <ul>
+    <li><strong>Außenseiten:</strong> gleicher Tau in A und in B. Er trocknet am Morgen ab und lässt sich reinigen.</li>
+    <li><strong>B, Innenseiten:</strong> Die Luft im Hohlraum ist Außenluft, und die Gläser sind innen ebenso kalt wie außen. Der Tau schlägt sich den Linsen gegenüber nieder. Nebel und Gischt dringen durch die Öffnungen ein.</li>
+    <li><strong>A, dichter Hohlraum:</strong> Das Trockenmittel hält den inneren Taupunkt weit unter 0&nbsp;°C. Keine Kondensation, solange es nicht gesättigt ist.</li>
+    <li><strong>A, Regenschauer auf warmes Paneel:</strong> Wurde die Platte nicht getrocknet (Gleichgewicht bei 50&nbsp;% Feuchte), hat die Luft im Film bei 45&nbsp;°C einen Taupunkt von 32&nbsp;°C. Ein schlagartig auf 20&nbsp;°C abgekühltes Glas kann einige Minuten lang beschlagen. Auf 10&nbsp;% getrocknete Platte: Taupunkt 6&nbsp;°C, kein Risiko.</li>
+  </ul>
+</section>
+
+<section id="dessiccant">
+  <h2>Feuchte: geschätztes Wasser im Kunststoff und durch den Randverbund</h2>
+  <p>Die eingeschlossene Luft enthält nur 0,02&nbsp;g Wasser. Der Kunststoff enthielte etwa 77&nbsp;g, und der Randverbund ließe je nach Dichtstoff 1 bis 24&nbsp;g pro Jahr durch. In dieser Abschätzung wirkt sich die Wahl des Randverbunds am stärksten auf die Lebensdauer aus.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Speicher</th><th scope="col">Berechnung</th><th scope="col">Wasser</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Eingeschlossene Luft (Filme + Rahmen)</th><td>2,1&nbsp;L bei 20&nbsp;°C und 50&nbsp;% Feuchte, also 8,6&nbsp;g/m³</td><td>0,02&nbsp;g</td></tr>
+      <tr><th scope="row">PMMA-Platte im Gleichgewicht mit einer Werkstatt bei 50&nbsp;%</th><td>12,9&nbsp;kg × 0,6&nbsp;% (typischer Gehalt, zu bestätigen)</td><td>77&nbsp;g</td></tr>
+      <tr><th scope="row">PMMA-Platte gesättigt</th><td>12,9&nbsp;kg × 2,1&nbsp;%</td><td>270&nbsp;g</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>Trocknungszeit der Plattenmitte durch das Trockenmittel im Rahmen</h3>
+  <p>Der Dampf muss über 0,9&nbsp;m in einem Luftfilm von 0,15&nbsp;mm diffundieren, während die Platte 29&nbsp;000-mal mehr Wasser enthält als dieser Film. Charakteristische Zeit:</p>
+  <div class="formule">\[\tau = \frac{4 L^2 R}{\pi^2 D_v} = \frac{4 \times 0{,}9^2 \times 29\,000}{\pi^2 \times 2{,}5 \cdot 10^{-5}} \approx 3{,}8 \cdot 10^{8} \ \mathrm{s} \approx 12 \ \mathrm{Jahre}\]</div>
+  <p>Bei dieser Zeitskala ist es besser, die Platte vor der Montage zu trocknen. Durch ihre 3&nbsp;mm, über beide Seiten, beträgt \(\tau = e^2 / (\pi^2 D)\) etwa 3&nbsp;Wochen bei 23&nbsp;°C und 2&nbsp;Tage bei 60&nbsp;°C. Die Diffusionskoeffizienten von Wasser in PMMA (5·10⁻¹³ und 5·10⁻¹²&nbsp;m²/s) sind Größenordnungen, mit dem Hersteller der Lentikularplatte zu validieren.</p>
+  <h3>Permeation durch den Randverbund</h3>
+  <p>Jährlicher Fluss für einen Randverbund von 7,6&nbsp;m Länge, 4&nbsp;mm Höhe und 10&nbsp;mm Tiefe:</p>
+  <div class="formule">\[\dot{m} = P \cdot A_j \cdot \frac{e_{ref}}{d} \cdot \frac{p_{v,site}}{p_{v,essai}} \cdot 365\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Dichtstoff</th><th scope="col">Permeabilität \(P\) (g/m²·Tag)</th><th scope="col">Eindringendes Wasser (g/Jahr)</th><th scope="col">Standzeit von 500&nbsp;g Molekularsieb 3A</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Butyl (PIB)</th><td>1 bis 1,5</td><td>0,9 bis 1,4</td><td>Mehr als 60&nbsp;Jahre</td></tr>
+      <tr><th scope="row">Polyurethan</th><td>3 bis 4</td><td>2,8 bis 3,8</td><td>24 bis 33&nbsp;Jahre</td></tr>
+      <tr><th scope="row">Polysulfid</th><td>4 bis 10</td><td>3,8 bis 9,5</td><td>10 bis 24&nbsp;Jahre</td></tr>
+      <tr><th scope="row">Silikon</th><td>15 bis 25</td><td>14 bis 24</td><td>4 bis 7&nbsp;Jahre</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Annahmen: Permeabilitäten an einem Film von 2&nbsp;mm gemessen, mittleres Klima von 11&nbsp;°C und 82&nbsp;% Feuchte, zu bestätigen anhand der Normalwerte des KMI/IRM (belgischer Wetterdienst). Das Molekularsieb 3A bindet 18,5&nbsp;% seiner Masse, also 92&nbsp;g Wasser auf 500&nbsp;g. Eine trocken verpresste EPDM-Dichtung ist keine Sperre: Sie lässt Luft durch.</p>
+  <h3>Atmung</h3>
+  <p>Ein Hohlraum, der sich um 25&nbsp;K erwärmt, will sich um 8,5&nbsp;% ausdehnen:</p>
+  <div class="formule">\[\Delta V = V \, \frac{\Delta T}{T}, \qquad \Delta p = p \, \frac{\Delta T}{T} \ \text{bei festem Volumen}\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Hohlraum</th><th scope="col">Luftvolumen</th><th scope="col">Austausch je Zyklus von 25&nbsp;K</th><th scope="col">Angesaugtes Wasser, wenn er atmet</th><th scope="col">Belastung, wenn er dicht und starr ist</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">A: Kontaktfilme</th><td>2,1&nbsp;L</td><td>0,18&nbsp;L</td><td>0,7&nbsp;g/Jahr</td><td>Vernachlässigbar: Die Gläser biegen sich um 0,03&nbsp;mm durch</td></tr>
+      <tr><th scope="row">Geschlossene Luftspalte 2&nbsp;×&nbsp;10&nbsp;mm</th><td>72&nbsp;L</td><td>6,1&nbsp;L</td><td>24&nbsp;g/Jahr</td><td>8,6&nbsp;kPa, also 31&nbsp;kN auf die Verglasung</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Nach diesen Größenordnungen kann der dünne Hohlraum ohne nennenswerte Spannung und ohne nennenswertes Feuchtepumpen geschlossen werden. Ein geschlossener Zwischenraum von 10&nbsp;mm würde die Nachteile beider Lösungen vereinen.</p>
+</section>
+
+<section id="uv">
+  <h2>UV-Bilanz: weniger als 1&nbsp;% durchgelassen, laut Datenblättern der VSG-Scheiben</h2>
+  <p>Ein VSG 44.2 besteht aus zwei Gläsern von 4&nbsp;mm, verbunden durch eine PVB-Folie von 0,76&nbsp;mm. Diese Folie übernimmt die Rolle der UV-Schutzfolie. Weißglas (eisenarm) allein lässt dagegen 86&nbsp;% der UV-Strahlung durch.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Verglasung</th><th scope="col">Lichttransmission</th><th scope="col">UV-Transmission (280–380&nbsp;nm, EN&nbsp;410)</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Weißglas monolithisch 4&nbsp;mm (AGC Planibel Clearvision)</th><td>92&nbsp;%</td><td>86&nbsp;%</td></tr>
+      <tr><th scope="row">Weißglas als VSG 44.2 (AGC Stratobel Clearvision)</th><td>91&nbsp;%</td><td>0&nbsp;%</td></tr>
+      <tr><th scope="row">Klarglas als VSG 44.2 (Saint-Gobain Stadip Protect), zum Vergleich</th><td>89&nbsp;%</td><td>0,7&nbsp;%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>Was die Sonne an UV liefert</h3>
+  <p>UV-Strahlung macht 4,6&nbsp;% der Sonnenenergie am Boden aus: 46&nbsp;W/m² von 1&nbsp;000 im Referenzspektrum ASTM&nbsp;G173, davon 32 zwischen 280 und 380&nbsp;nm und 14 zwischen 380 und 400&nbsp;nm.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Seite</th><th scope="col">Sonne in der Spitze</th><th scope="col">UV in der Spitze</th><th scope="col">Sonne pro Jahr (Schätzung)</th><th scope="col">Einfallende UV pro Jahr</th><th scope="col">UV 280–380&nbsp;nm, zur Lentikularplatte durchgelassen</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Land (Südosten)</th><td>684&nbsp;W/m²</td><td>32&nbsp;W/m²</td><td>≈&nbsp;900&nbsp;kWh/m²</td><td>≈&nbsp;41&nbsp;kWh/m²</td><td>weniger als 0,2&nbsp;kWh/m²</td></tr>
+      <tr><th scope="row">See (Nordwesten)</th><td>512&nbsp;W/m²</td><td>24&nbsp;W/m²</td><td>≈&nbsp;400&nbsp;kWh/m²</td><td>≈&nbsp;18&nbsp;kWh/m²</td><td>weniger als 0,1&nbsp;kWh/m²</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Die Jahressummen sind Größenordnungen, abgeleitet aus dem berechneten klaren Himmel (1&nbsp;630 und 490&nbsp;kWh/m²) und einem Bewölkungsfaktor. Sie sind mit PVGIS zu bestätigen. Die letzte Spalte verwendet die ungünstigere Transmission der beiden Datenblätter (0,7&nbsp;%).</p>
+  <h3>Bilanz</h3>
+  <ul>
+    <li><strong>Beide Seiten sind geschützt,</strong> da beide Gläser Verbundgläser sind. Die Kanten sind vom Rahmen abgedeckt.</li>
+    <li><strong>Die Wärmebilanz ändert sich nicht.</strong> Die aufgehaltene UV-Strahlung wird in der PVB-Folie zu Wärme. Sie ist bereits in den 11&nbsp;% Absorption des Glases enthalten, die aus dem gemessenen Gesamtenergiedurchlassgrad (g-Wert) abgeleitet sind.</li>
+    <li><strong>Das Band von 380 bis 400&nbsp;nm wird in den Datenblättern nicht beziffert.</strong> Es macht 30&nbsp;% der UV-Energie aus. Kuraray gibt an, dass ein Standard-PVB bis etwa 400&nbsp;nm fast alles aufhält. Beim Glashersteller ist die Spektralkurve seiner PVB-Folie anzufragen.</li>
+    <li><strong>Eine Zwischenfolie mit garantierter Sperrgrenze gibt es,</strong> falls die Kurve nicht ausreicht (Trosifol UV Extra Protect, angegeben als vollständig UV-sperrend). Ihr thermischer Effekt ist vernachlässigbar: weniger als 1&nbsp;% zusätzliche Absorption.</li>
+    <li><strong>Die Bedeutung hängt vom Werkstoff ab.</strong> Ein Standard-PMMA absorbiert UV selbst und ist gut vergilbungsbeständig. PETG oder Polystyrol sind dafür empfindlicher (allgemeine Einschätzung, am Datenblatt der Lentikularplatte zu prüfen).</li>
+  </ul>
+</section>
+
+<section id="sel">
+  <h2>Meersalz: Abschätzung dessen, was einen hinterlüfteten Hohlraum durchströmt</h2>
+  <p>Durch den hinterlüfteten Hohlraum würden 90&nbsp;000 bis 260&nbsp;000&nbsp;m³ Seeluft pro Jahr strömen, also 1 bis 13&nbsp;g Salz. Der Anteil, der sich ablagert, ist hier nicht berechenbar, aber die Linsenseite lässt sich nicht ohne Demontage reinigen.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Größe</th><th scope="col">Wert</th><th scope="col">Herkunft</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Luftvolumenstrom in beiden Spalten</th><td>10 bis 30&nbsp;m³/h</td><td>Thermischer Auftrieb und Wind</td></tr>
+      <tr><th scope="row">Jahresvolumen</th><td>90&nbsp;000 bis 260&nbsp;000&nbsp;m³</td><td>Volumenstrom × 8&nbsp;760&nbsp;h</td></tr>
+      <tr><th scope="row">Schwebendes Salz direkt an der Küste</th><td>10 bis 50&nbsp;µg/m³</td><td>Größenordnung, Näherungswert</td></tr>
+      <tr><th scope="row">Salz, das den Hohlraum durchströmt</th><td>1 bis 13&nbsp;g/Jahr</td><td>Produkt der beiden vorigen Zeilen</td></tr>
+      <tr><th scope="row">Exponierte Innenfläche</th><td>14,4&nbsp;m²</td><td>4 Flächen von 3,6&nbsp;m²</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li>Natriumchlorid wird oberhalb von 75&nbsp;% Feuchte flüssig (aus dem Gedächtnis, Näherungswert). An der Küste bleibt ein Salzbelag daher in den meisten Nächten feucht und hinterlässt dann beim Trocknen Spuren.</li>
+    <li>Eine Öffnung, die groß genug zum Lüften ist, lässt auch den dicht über dem Deich verwehten Sand und die Gischt durch.</li>
+    <li>Salz oder Staub, der sich ansammelt, erhöht die solare Absorption, und B reagiert darauf empfindlicher als A.</li>
+  </ul>
+</section>
+
+<section id="dilatation">
+  <h2>Wärmeausdehnung: berechnete Differenz von ±&nbsp;3,7&nbsp;mm auf 2&nbsp;m</h2>
+  <p>PMMA dehnt sich achtmal stärker aus als Glas. Zwischen −10&nbsp;°C und +50&nbsp;°C erreicht die berechnete Differenz ±&nbsp;3,7&nbsp;mm auf 2&nbsp;m. In dieser Abschätzung ist das eine strengere Konstruktionsvorgabe als die Temperatur.</p>
+  <div class="formule">\[\Delta L = \alpha \, L \, \Delta T\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Abweichung von der Montagetemperatur (20&nbsp;°C)</th><th scope="col">PMMA, auf 2&nbsp;m</th><th scope="col">Glas, auf 2&nbsp;m</th><th scope="col">Differenz</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">+30&nbsp;K (Paneel bei 50&nbsp;°C)</th><td>+4,2&nbsp;mm</td><td>+0,5&nbsp;mm</td><td>+3,7&nbsp;mm</td></tr>
+      <tr><th scope="row">−30&nbsp;K (Nacht bei −10&nbsp;°C)</th><td>−4,2&nbsp;mm</td><td>−0,5&nbsp;mm</td><td>−3,7&nbsp;mm</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li>Die Platte muss oben aufgehängt und sonst frei sein, mit mindestens 5&nbsp;mm Spiel an jedem Rand. Geklemmt oder geklebt droht sie sich zu wellen und den Lentikulareffekt zu beeinträchtigen.</li>
+    <li>Im Winter gerät ein vollkommen dichter Hohlraum in Unterdruck (bis zu 10&nbsp;kPa bei −30&nbsp;K). Die Gläser legen sich an die Platte an und bremsen deren Schrumpfen.</li>
+    <li>Ein Kapillarröhrchen zum Druckausgleich, das im Trockenmittel mündet, gleicht den Druck aus. Es kostet nur 0,7&nbsp;g Wasser pro Jahr.</li>
+  </ul>
+</section>
+
+<section id="recommandation">
+  <h2>Derzeit bevorzugter Ansatz: der dichte Verbund, durch ein Muster zu bestätigen</h2>
+  <p>Wird die Abschätzung bestätigt, wäre der Verbund wie ein Isolierglas mit sehr dünnem Zwischenraum zu bauen. Die folgenden Bedingungen ergeben sich aus den vorstehenden Berechnungen.</p>
+  <ol class="etapes">
+    <li><strong>Randverbund mit Butyl-Sperre (PIB),</strong> ergänzt durch einen haltenden Dichtstoff. Weder Silikon allein noch trockene EPDM-Dichtung.</li>
+    <li><strong>Molekularsieb 3A,</strong> mindestens 500&nbsp;g im Rahmen verteilt, vorzugsweise als austauschbare Kartusche. Kieselgel verliert bei Erwärmung an Kapazität und eignet sich weniger.</li>
+    <li><strong>Vortrocknung der Platte im Ofen vor der Montage,</strong> in der Größenordnung von 48&nbsp;h bei 60&nbsp;°C, und Zusammenbau in trockener Werkstatt.</li>
+    <li><strong>Platte oben aufgehängt, sonst frei,</strong> 5&nbsp;mm Spiel je Rand, möglichst dünne Luftfilme.</li>
+    <li><strong>Kapillarröhrchen zum Druckausgleich,</strong> das im Trockenmittel mündet.</li>
+    <li><strong>VSG 44.2 aus Weißglas auf beiden Seiten,</strong> mit der vom Glashersteller gelieferten UV-Kurve der Zwischenfolie.</li>
+    <li><strong>Muster von 50&nbsp;×&nbsp;50&nbsp;cm</strong> mit Temperatur- und Feuchtefühler, einen Monat lang am Standort exponiert, bevor die Fertigung gestartet wird.</li>
+  </ol>
+  <h3>Zu bestätigende Annahmen, die die Zahlen ändern können</h3>
+  <ul class="a-confirmer">
+    <li>Genauer Werkstoff und genaue Dicke der Lentikularplatte. PETG oder Polystyrol sind weniger wärmebeständig als PMMA.</li>
+    <li>Genauer Azimut des Deichs am Standort des Werks (56° angesetzt).</li>
+    <li>Typ des VSG 44.2, seine Werte nach EN&nbsp;410 und die Spektralkurve seiner Zwischenfolie.</li>
+    <li>Rahmendetail: Art des Randverbunds, Lage und Masse des Trockenmittels.</li>
+    <li>Normalwerte des KMI/IRM für Feuchte und Wind an der Küste sowie jährliche Sonneneinstrahlung nach PVGIS.</li>
+    <li>Brennweite der Linsen: prüfen, dass sie in der Größenordnung der Plattendicke bleibt, um jede Bündelung der Sonne auf Distanz auszuschließen.</li>
+  </ul>
+</section>
+
+<section id="conclusion">
+  <h2>Fazit: was die Berechnung abschätzt und was noch zu messen bleibt</h2>
+  <p>Dieselbe Methode wird auf drei Fälle angewendet. Die Temperaturen sind die der Lentikularplatte, ohne Wind, für den realen Tag bei 35&nbsp;°C und dann für den Hüllfall.</p>
+  <div class="defile">
+  <table class="conclusion">
+    <thead>
+      <tr><th scope="col">Bewerteter Punkt</th><th scope="col" class="col-a">A. Dichter Verbund</th><th scope="col" class="col-b">B. Hinterlüftete Luftspalte</th><th scope="col">Bezugswert</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Transparente Lentikularplatte, unbedruckt (Projektannahme)</th><td>45 bis 49&nbsp;°C</td><td>47 bis 52&nbsp;°C</td><td>Dauergebrauchstemperatur von extrudiertem PMMA: 70&nbsp;°C</td></tr>
+      <tr><th scope="row">Verschmutzte oder getönte Lentikularplatte (Absorption 20&nbsp;%)</th><td>48 bis 54&nbsp;°C</td><td>bis zu 59&nbsp;°C</td><td>Wärmeformbeständigkeit (HDT): 95 bis 100&nbsp;°C</td></tr>
+      <tr><th scope="row">Bedruckte Lentikularplatte, dunkles Bild (Absorption 90&nbsp;%)</th><td>70 bis 79&nbsp;°C</td><td>89 bis 100&nbsp;°C; 94 bis 105&nbsp;°C bei geschlossenem Spalt</td><td>Vicat-Erweichungstemperatur: 103&nbsp;°C</td></tr>
+      <tr><th scope="row">Geschätzte Unsicherheit des Modells</th><td>±&nbsp;3&nbsp;K</td><td>±&nbsp;3&nbsp;K</td><td>Stationärer Zustand, klarer Himmel, ohne Wind</td></tr>
+      <tr><th scope="row">Feuchte im Hohlraum</th><td>Vom Trockenmittel bestimmt, solange der Randverbund hält</td><td>Die der Seeluft: Tau in klarer Nacht zu erwarten</td><td>Berechnete Tauschwelle: 76 bis 94&nbsp;% Feuchte</td></tr>
+      <tr><th scope="row">Was die Berechnung nicht entscheidet</th><td>Dauerhaftigkeit des Randverbunds, tatsächlicher Wassergehalt der Platte</td><td>Anteil des Salzes, der sich ablagert, tatsächlicher Volumenstrom je nach Öffnungen</td><td>Genauer Werkstoff der Lentikularplatte</td></tr>
+      <tr><th scope="row">Messung, die entscheiden würde</th><td colspan="2">Muster von 50&nbsp;×&nbsp;50&nbsp;cm, am Standort exponiert, mit Temperatur- und Feuchtefühlern, in beiden Konfigurationen</td><td>Ein Sommermonat</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li><strong>Zur Befürchtung des Schmelzens.</strong> Die Berechnung findet sie für eine dunkel bedruckte Lentikularplatte wieder: 70 bis 105&nbsp;°C je nach Aufbau, also über der Dauergebrauchstemperatur und nahe der Erweichung. Für eine unbedruckte Lentikularplatte ergibt sie 45 bis 52&nbsp;°C, also rund zwanzig Kelvin unter der Dauergebrauchstemperatur.</li>
+    <li><strong>Zur Wahl zwischen A und B.</strong> Der abgeschätzte Temperaturunterschied beträgt 2 bis 3&nbsp;K, in derselben Größenordnung wie die Unsicherheit. Der Unterschied liegt vor allem bei Feuchte, Salz und Wartung.</li>
+    <li><strong>Zur Tragweite der Abschätzung.</strong> Alles beruht auf drei Annahmen: keine Druckfarbe, PMMA von 3&nbsp;mm, VSG 44.2 aus Weißglas. Ändert sich eine davon, lässt sich die Berechnung mit den Skripten des Repositorys mit anderen Daten wiederholen.</li>
+  </ul>
+</section>
+
+<section id="donnees">
+  <h2>Anhang: physikalische Daten und Quellen</h2>
+  <p>Grundannahme: Lentikularplatte aus transparentem extrudiertem PMMA von 3&nbsp;mm, unbedruckt, zwischen zwei VSG 44.2 aus Weißglas.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Größe</th><th scope="col">Wert</th><th scope="col">Quelle</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Glas: Wärmeleitfähigkeit \(\lambda\)</th><td>1,0&nbsp;W/m·K</td><td>EN&nbsp;572-1 (üblicher Normwert)</td></tr>
+      <tr><th scope="row">Glas: Dichte, spezifische Wärmekapazität</th><td>2&nbsp;500&nbsp;kg/m³; 720&nbsp;J/kg·K</td><td>EN&nbsp;572-1 (üblicher Normwert)</td></tr>
+      <tr><th scope="row">Glas: Emissivität, Wärmeausdehnung</th><td>0,837; 9·10⁻⁶&nbsp;K⁻¹</td><td>EN&nbsp;673, EN&nbsp;572-1 (übliche Werte)</td></tr>
+      <tr><th scope="row">PVB-Folie 0,76&nbsp;mm: \(\lambda\)</th><td>0,20&nbsp;W/m·K</td><td>Üblicher Wert, Näherungswert</td></tr>
+      <tr><th scope="row">VSG 44.2 Weißglas: Lichttransmission, Gesamtenergiedurchlassgrad \(g\), UV</th><td>91&nbsp;%; 0,84; 0&nbsp;%</td><td><a href="https://www.agc-yourglass.com/sites/default/files/brochures/original/POCKET%20FRANCE%202018.pdf">AGC, Pocket France 2018</a></td></tr>
+      <tr><th scope="row">VSG 44.2 Weißglas: energetische Transmission, Reflexion, Absorption</th><td>0,81; 0,08; 0,11</td><td>Aus \(g\) mit der Formel nach EN&nbsp;410 unten abgeleitet</td></tr>
+      <tr><th scope="row">Extrudiertes PMMA: \(\lambda\), Dichte, spezifische Wärmekapazität</th><td>0,19&nbsp;W/m·K; 1&nbsp;190&nbsp;kg/m³; 1&nbsp;470&nbsp;J/kg·K</td><td><a href="https://www.voskunststoffen.nl/files/166151/datasheet%20plexiglas%20XT%20GS.pdf">Datenblatt PLEXIGLAS GS/XT</a></td></tr>
+      <tr><th scope="row">Extrudiertes PMMA: Wärmeausdehnung</th><td>70·10⁻⁶&nbsp;K⁻¹</td><td>Datenblatt PLEXIGLAS GS/XT</td></tr>
+      <tr><th scope="row">Extrudiertes PMMA: Dauergebrauchstemperatur; Wärmeformbeständigkeit (HDT); Vicat</th><td>70&nbsp;°C; 95 bis 100&nbsp;°C; 103&nbsp;°C</td><td>Datenblatt PLEXIGLAS GS/XT</td></tr>
+      <tr><th scope="row">PMMA 3&nbsp;mm: Lichttransmission, Gesamtenergiedurchlassgrad \(g\)</th><td>92&nbsp;%; 0,85</td><td>Datenblatt PLEXIGLAS GS/XT</td></tr>
+      <tr><th scope="row">PMMA 3&nbsp;mm: energetische Absorption</th><td>0,10</td><td>Aus \(g\) mit der Formel nach EN&nbsp;410 abgeleitet</td></tr>
+      <tr><th scope="row">PMMA: maximale Wasseraufnahme</th><td>2,1&nbsp;% der Masse</td><td>Datenblatt PLEXIGLAS GS/XT</td></tr>
+      <tr><th scope="row">Luft bei 40&nbsp;°C: \(\lambda\), \(\mu\), \(\rho\), \(c_p\)</th><td>0,0271&nbsp;W/m·K; 1,91·10⁻⁵&nbsp;Pa·s; 1,127&nbsp;kg/m³; 1&nbsp;007&nbsp;J/kg·K</td><td>Übliche Tabellenwerte</td></tr>
+      <tr><th scope="row">Äußere Konvektion in Abhängigkeit vom Wind</th><td>\(h = 4 + 4v\) (W/m²·K, \(v\) in m/s)</td><td>EN&nbsp;ISO&nbsp;6946 (üblicher Normwert)</td></tr>
+      <tr><th scope="row">Mittlerer Wind in Ostende, in 10&nbsp;m Höhe</th><td>17&nbsp;km/h im Juli; 26&nbsp;km/h im Januar; vorherrschend aus West</td><td><a href="https://weatherspark.com/y/48792/Average-Weather-in-Ostend-Belgium-Year-Round">Weather Spark</a>, <a href="https://www.windfinder.com/windstatistics/oostende_pier">Windfinder</a></td></tr>
+      <tr><th scope="row">Wind in 2&nbsp;m Höhe</th><td>0,8 × Wind in 10&nbsp;m, also 3,8&nbsp;m/s im Juli</td><td>Potenzgesetz, Exponent 0,14</td></tr>
+      <tr><th scope="row">Sonne bei klarem Himmel auf jeder Seite</th><td>Siehe Abschnitt Ausrichtung</td><td>Berechnung mit pvlib, Ineichen-Modell</td></tr>
+      <tr><th scope="row">UV-Anteil an der Sonnenstrahlung</th><td>4,6&nbsp;% (280–400&nbsp;nm)</td><td>Spektrum ASTM&nbsp;G173-03, numerisch integriert</td></tr>
+      <tr><th scope="row">Wasserdampfdurchlässigkeit der Dichtstoffe</th><td>1 bis 25&nbsp;g/m²·Tag je nach Dichtstoff</td><td><a href="https://sweets.construction.com/swts_content_files/324/830181.pdf">Dow, Insulating Glass Technical Manual</a></td></tr>
+      <tr><th scope="row">Kapazität des Molekularsiebs 3A</th><td>18,5&nbsp;% seiner Masse</td><td><a href="https://oker-chemie.de/wp-content/uploads/2025/09/PI_SIO-12_MS-3A-engl.pdf">Oker-Chemie</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Aus dem Gesamtenergiedurchlassgrad abgeleitete Absorption (EN&nbsp;410, Wärmeübergangskoeffizienten 8 und 23&nbsp;W/m²·K):</p>
+  <div class="formule">\[g = \tau_e + \alpha_e \, \frac{h_i}{h_i + h_e}, \qquad \tau_e + \rho_e + \alpha_e = 1 \;\Rightarrow\; \alpha_e = \frac{1 - \rho_e - g}{1 - \dfrac{h_i}{h_i + h_e}}\]</div>
+  <p>Kontrolle der Methode an einem VSG 44.2 aus Klarglas, dessen Datenblatt alles angibt: Transmission 75,8&nbsp;%, Reflexion 7,1&nbsp;%, also berechnetes \(g\) von 0,802 gegenüber angegebenen 0,80 (<a href="https://static.coteverre.fr/document/stadip-protect-44.2-verre-feuillete-cote-verre.pdf">Stadip Protect 44.2</a>).</p>
+  <h3>Weitere Seiten, abgerufen am 9. Oktober 2026</h3>
+  <ul>
+    <li><a href="https://nrel.gov/docs/fy11osti/47706.pdf">NREL, moisture ingress in edge seals</a>: PIB ist die beste Sperre, Silikon die schlechteste.</li>
+    <li><a href="https://www.sorbentsystems.com/desiccants_charts.html">Sorbent Systems</a>: Temperaturbeständigkeit der Trockenmittel.</li>
+    <li><a href="https://www.glassonline.com/trosifol-uv-exploits-the-entire-spectrum-of-sunlight/">Glass Online, Trosifol UV</a>: Standard-PVB hält fast die gesamte UV-Strahlung bis etwa 400&nbsp;nm auf.</li>
+    <li><a href="https://www.trosifol.com/applications-products/products/trosifol-uv-extra-protect">Kuraray, Trosifol UV Extra Protect</a>: Zwischenfolie mit verstärktem UV-Schutz.</li>
+  </ul>
+  <p>Aus dem Gedächtnis zitiert, nicht erneut geöffnet: EN&nbsp;572-1, EN&nbsp;673, EN&nbsp;410, EN&nbsp;ISO&nbsp;6946, Magnus-Formel (WMO), Emissivität des klaren Himmels nach Berdahl und Martin (1984). Ihre Werte sind als Näherungswerte anzusehen, solange sie nicht gegengeprüft sind.</p>
+  <p>Die Berechnungsskripte (Knotenbilanz, schrittweise Rechnung entlang des Luftspalts, Sonne je Seite, Taupunkt) liegen im Ordner <code>calcul/</code> des Repositorys.</p>
+</section>
+
+</article>
+</div>
+</main>
+
+<footer class="pied">
+  <p>Berechnungsnotiz, erstellt am 9. Oktober 2026 für die Lentikular-Vitrine der Veilleurs. Es handelt sich um eine rechnerische Abschätzung im stationären Zustand, mit einer geschätzten Genauigkeit von ±&nbsp;3&nbsp;K. Sie ist vor der Fertigung durch ein instrumentiertes Muster (Mock-up) zu bestätigen.</p>
+</footer>
+
+<div id="bulle" class="bulle" role="status" hidden></div>
+
+<script defer src="/assets/katex/katex.min.js"></script>
+<script defer src="/assets/katex/auto-render.min.js"></script>
+<script defer src="/assets/app.js"></script>
+</body>
+</html>

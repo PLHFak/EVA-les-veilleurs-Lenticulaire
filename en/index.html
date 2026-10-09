@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Les Veilleurs, lenticular showcase: calculation note</title>
+<meta name="description" content="Thermal, moisture and UV calculation note for the 2 × 1.8 m lenticular showcase on the sea wall promenade at Lombardsijde.">
+<link rel="stylesheet" href="/assets/katex/katex.min.css">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="bandeau">
+  <a class="bandeau-titre" href="#haut">Les Veilleurs, lenticular showcase</a>
+  <nav class="langues" aria-label="Language"><a href="/" hreflang="fr" lang="fr">FR</a><a href="/de/" hreflang="de" lang="de">DE</a><a href="/en/" hreflang="en" lang="en" aria-current="true">EN</a></nav>
+  <span class="bandeau-date">Calculation note of 9 October 2026</span>
+</header>
+
+<main id="haut">
+
+<section class="ouverture">
+  <div class="ouverture-texte">
+    <h1>Lenticular sheet between two panes: 45&nbsp;°C estimated at 35&nbsp;°C air</h1>
+    <p class="chapeau">This note evaluates by calculation the temperature of a transparent lenticular sheet of 2&nbsp;×&nbsp;1.8&nbsp;m placed between two panes, on the sea wall promenade at Lombardsijde. For a day at 35&nbsp;°C with no wind, the model gives 45&nbsp;°C as a sealed sandwich and 47&nbsp;°C with ventilated air gaps. The continuous service temperature of an extruded PMMA is 70&nbsp;°C.</p>
+    <p class="chapeau">The fear of overheating is borne out for a printed lenticular sheet: with a dark image, the same model gives 70 to 105&nbsp;°C. Unprinted, the absorbed energy is about seven times lower. These results remain an evaluation, to be confirmed by an instrumented mock-up.</p>
+    <p class="ouverture-liens"><a href="#conclusion">Read the conclusion</a><a href="#comparaison">Compare the two designs</a></p>
+  </div>
+
+  <figure class="boussole" aria-labelledby="boussole-titre">
+    <figcaption id="boussole-titre">The pane over a heatwave day, 20 July</figcaption>
+    <svg id="boussole-svg" viewBox="0 0 420 420" role="img" aria-label="Plan view: the sea wall, the sea to the north-west, the land to the south-east, the pane parallel to the sea wall and the path of the sun"></svg>
+    <div class="boussole-commande">
+      <label for="heure">Local summer time <output id="heure-lue" for="heure">13:00</output></label>
+      <input id="heure" type="range" min="0" max="35" step="1" value="16">
+      <fieldset class="vent-choix">
+        <legend>Wind</legend>
+        <label><input type="radio" name="vent" value="0" checked> no wind</label>
+        <label><input type="radio" name="vent" value="2"> 2&nbsp;m/s</label>
+      </fieldset>
+    </div>
+    <dl class="boussole-lecture">
+      <div><dt>Sun, land side</dt><dd id="l-terre">631 W/m²</dd></div>
+      <div><dt>Sun, sea side</dt><dd id="l-mer">122 W/m²</dd></div>
+      <div><dt>Air</dt><dd id="l-air">32.3 °C</dd></div>
+      <div class="serie-a"><dt>Lenticular, sandwich A</dt><dd id="l-a">44.5 °C</dd></div>
+      <div class="serie-b"><dt>Lenticular, air gaps B</dt><dd id="l-b">47.1 °C</dd></div>
+    </dl>
+  </figure>
+</section>
+
+<div class="corps">
+
+<nav class="sommaire" aria-label="Contents">
+  <ol>
+    <li><a href="#comparaison">Comparison</a></li>
+    <li><a href="#coupe">The two designs in section</a></li>
+    <li><a href="#orientation">Orientation, sun and wind</a></li>
+    <li><a href="#energie">Absorbed energy</a></li>
+    <li><a href="#temperatures">Temperatures</a></li>
+    <li><a href="#ventilation">Natural ventilation</a></li>
+    <li><a href="#rosee">Dew point</a></li>
+    <li><a href="#dessiccant">Moisture and desiccant</a></li>
+    <li><a href="#uv">UV balance</a></li>
+    <li><a href="#sel">Sea salt</a></li>
+    <li><a href="#dilatation">Thermal expansion and pressure</a></li>
+    <li><a href="#recommandation">Preferred option</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#donnees">Appendix: data and sources</a></li>
+  </ol>
+</nav>
+
+<article class="note">
+
+<section id="comparaison">
+  <h2>Comparison of the two designs, criterion by criterion</h2>
+  <p>In this evaluation, the sealed sandwich comes out better on most criteria, but it depends entirely on the quality of its seal. Temperatures are given for two cases: the site day (heatwave at 35&nbsp;°C, orientation of the sea wall) and a more severe envelope case (800&nbsp;W/m² at the same time as 35&nbsp;°C).</p>
+  <div class="defile">
+  <table class="deux-vitres">
+    <thead>
+      <tr><th scope="col">Criterion</th><th scope="col" class="col-a">A. Sealed sandwich + desiccant</th><th scope="col" class="col-b">B. Ventilated air gaps 2&nbsp;×&nbsp;10&nbsp;mm</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Lenticular sheet, site day, no wind</th><td>45&nbsp;°C</td><td>47&nbsp;°C</td></tr>
+      <tr><th scope="row">Lenticular sheet, site day, 2&nbsp;m/s wind</th><td>40&nbsp;°C</td><td>42&nbsp;°C</td></tr>
+      <tr><th scope="row">Lenticular sheet, envelope case, no wind</th><td>49&nbsp;°C</td><td>52&nbsp;°C</td></tr>
+      <tr><th scope="row">Margin below 70&nbsp;°C in the worst case</th><td>21&nbsp;K</td><td>18&nbsp;K</td></tr>
+      <tr><th scope="row">Heat removed by the cavity air</th><td>0%: everything passes through the panes</td><td>5 to 8%</td></tr>
+      <tr><th scope="row">Soiled lenticular sheet (20% absorption), envelope case</th><td>54&nbsp;°C</td><td>59&nbsp;°C</td></tr>
+      <tr><th scope="row">Internal condensation</th><td>Not expected as long as the desiccant is not saturated</td><td>Expected on clear nights with little wind, and in mist</td></tr>
+      <tr><th scope="row">Salt and sand in the cavity</th><td>None</td><td>1 to 13&nbsp;g of salt per year pass through the cavity</td></tr>
+      <tr><th scope="row">UV received by the lenticular sheet</th><td colspan="2">Less than 1% in both cases, according to the laminated glass data sheets</td></tr>
+      <tr><th scope="row">Internal maintenance</th><td>None</td><td>Dismantling to clean the lens side</td></tr>
+      <tr><th scope="row">Main risk</th><td>Seal failure: permanent fogging, cannot be drained</td><td>Salt film and water marks between the panes</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>According to this calculation, ventilation changes the temperature of an unprinted lenticular sheet very little, and it exposes the cavity to dew and salt. With a printed image, the gap between the two designs would be larger: see the conclusion.</p>
+</section>
+
+<section id="coupe">
+  <h2>Where the heat goes in each design</h2>
+  <figure class="large">
+    <svg viewBox="0 0 760 470" role="img" aria-label="Vertical sections of the two designs: sealed sandwich on the left, ventilated air gaps on the right" class="coupe">
+      <defs>
+        <marker id="m-soleil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#C99200"/></marker>
+        <marker id="m-chaud" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#C2412D"/></marker>
+        <marker id="m-air" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#48626B"/></marker>
+        <pattern id="lentilles" width="6" height="10" patternUnits="userSpaceOnUse"><path d="M3 0a5.67 5.67 0 0 0 0 10" fill="none" stroke="#0B7FA0" stroke-width="1.2"/></pattern>
+      </defs>
+
+      <g class="legende">
+        <rect x="24" y="14" width="14" height="14" class="f-verre"/><text x="44" y="25">Glass 44.2</text>
+        <rect x="128" y="14" width="14" height="14" class="f-lent"/><text x="148" y="25">Lenticular 3 mm</text>
+        <line x1="272" x2="300" y1="21" y2="21" class="l-soleil" marker-end="url(#m-soleil)"/><text x="308" y="25">Sun</text>
+        <line x1="366" x2="394" y1="21" y2="21" class="l-chaud" marker-end="url(#m-chaud)"/><text x="402" y="25">Heat leaving</text>
+        <line x1="520" x2="548" y1="21" y2="21" class="l-air" marker-end="url(#m-air)"/><text x="556" y="25">Air</text>
+        <circle cx="604" cy="21" r="2.5" class="p-dess"/><circle cx="612" cy="21" r="2.5" class="p-dess"/><text x="622" y="25">Desiccant</text>
+      </g>
+
+      <g>
+        <rect x="24" y="46" width="344" height="400" class="cadre-a"/>
+        <text x="40" y="72" class="nom">A. Sealed sandwich + desiccant</text>
+        <rect x="86" y="100" width="98" height="18" class="chassis"/>
+        <g class="p-dess"><circle cx="96" cy="109" r="2.5"/><circle cx="106" cy="109" r="2.5"/><circle cx="116" cy="109" r="2.5"/><circle cx="126" cy="109" r="2.5"/><circle cx="136" cy="109" r="2.5"/><circle cx="146" cy="109" r="2.5"/><circle cx="156" cy="109" r="2.5"/><circle cx="166" cy="109" r="2.5"/><circle cx="176" cy="109" r="2.5"/></g>
+        <rect x="86" y="368" width="98" height="18" class="chassis"/>
+        <rect x="96" y="118" width="28" height="250" class="f-verre"/>
+        <rect x="124" y="118" width="6" height="250" fill="url(#lentilles)"/>
+        <rect x="127" y="118" width="16" height="250" class="f-lent"/>
+        <rect x="146" y="118" width="28" height="250" class="f-verre"/>
+        <line x1="40" x2="92" y1="158" y2="158" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="40" x2="92" y1="183" y2="183" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="40" x2="92" y1="208" y2="208" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="92" x2="44" y1="313" y2="313" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="92" x2="44" y1="338" y2="338" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="178" x2="226" y1="313" y2="313" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="178" x2="226" y1="338" y2="338" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <text x="196" y="113">Desiccant in the frame</text>
+        <text x="196" y="146">Air films of 0.2 mm:</text>
+        <text x="196" y="162">everything in contact</text>
+        <text x="196" y="196" class="chiffre">45 °C, no wind</text>
+        <text x="196" y="214" class="fort">40 °C at 2 m/s</text>
+        <text x="196" y="246">Closed cavity: no salt,</text>
+        <text x="196" y="262">no fogging while the</text>
+        <text x="196" y="278">desiccant lasts</text>
+        <text x="234" y="317">glass conduction,</text>
+        <text x="234" y="333">then wind and</text>
+        <text x="234" y="349">radiation</text>
+        <text x="40" y="426">Edge seal with butyl (PIB) barrier</text>
+      </g>
+
+      <g>
+        <rect x="392" y="46" width="344" height="400" class="cadre-b"/>
+        <text x="408" y="72" class="nom">B. Ventilated air gaps 2 × 10 mm</text>
+        <rect x="440" y="92" width="140" height="8" class="f-verre"/>
+        <rect x="442" y="368" width="44" height="14" class="chassis"/>
+        <rect x="496" y="368" width="28" height="14" class="chassis"/>
+        <rect x="534" y="368" width="44" height="14" class="chassis"/>
+        <rect x="452" y="118" width="28" height="250" class="f-verre"/>
+        <rect x="499" y="118" width="6" height="250" fill="url(#lentilles)"/>
+        <rect x="502" y="118" width="16" height="250" class="f-lent"/>
+        <rect x="540" y="118" width="28" height="250" class="f-verre"/>
+        <path d="M491 406V109H434" class="l-air" marker-end="url(#m-air)"/>
+        <path d="M529 406V109H586" class="l-air" marker-end="url(#m-air)"/>
+        <line x1="408" x2="448" y1="158" y2="158" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="408" x2="448" y1="183" y2="183" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="408" x2="448" y1="208" y2="208" class="l-soleil" marker-end="url(#m-soleil)"/>
+        <line x1="448" x2="410" y1="313" y2="313" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="448" x2="410" y1="338" y2="338" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="572" x2="610" y1="313" y2="313" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <line x1="572" x2="610" y1="338" y2="338" class="l-chaud" marker-end="url(#m-chaud)"/>
+        <text x="594" y="99">Outlet under roof</text>
+        <text x="594" y="146">Air removes only</text>
+        <text x="594" y="162">5 to 8% of the heat</text>
+        <text x="594" y="196" class="chiffre">47 °C, no wind</text>
+        <text x="594" y="214" class="fort">42 °C at 2 m/s</text>
+        <text x="594" y="246">Sea air in the</text>
+        <text x="594" y="262">cavity: salt, sand,</text>
+        <text x="594" y="278">dew at night</text>
+        <text x="408" y="426">Small air inlets at the bottom: 9 to 14 m³/h</text>
+      </g>
+    </svg>
+    <figcaption>Schematic vertical sections, thicknesses not to scale. Temperatures for the site day at 35&nbsp;°C.</figcaption>
+  </figure>
+  <p>In A, the lenticular sheet touches both panes. Its heat passes by conduction into the glass, which the wind cools over 7.2&nbsp;m². In B, the air in the gap insulates the lenticular sheet from the panes and carries almost nothing away.</p>
+</section>
+
+<section id="orientation">
+  <h2>Orientation: sun and wind calculated for the site</h2>
+  <p>The sea wall follows the shoreline, oriented at 56° from north (azimuth calculated on the Nieuwpoort–Ostend line, to be confirmed on a plan). The pane is parallel to it: one side faces the land to the south-east (146°), the other faces the sea to the north-west (326°). Site position: 51.17357°&nbsp;N, 2.78028°&nbsp;E.</p>
+  <figure class="large">
+    <div id="g-jour" class="graphe"></div>
+    <figcaption>Clear sky calculated for 20 July (Ineichen model, Linke turbidity 3, albedo 0.25). Air from 21&nbsp;°C at 06:00 to 35&nbsp;°C at 16:30. No wind.</figcaption>
+    <details><summary>See the hour-by-hour values</summary><div class="defile" id="t-jour"></div></details>
+  </figure>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Time</th><th scope="col">Sun received</th><th scope="col">Air</th><th scope="col">Lenticular sheet A</th><th scope="col">Lenticular sheet B</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">11:30, maximum on the land side</th><td>684&nbsp;W/m²</td><td>29.8&nbsp;°C</td><td>42.8&nbsp;°C</td><td>45.6&nbsp;°C</td></tr>
+      <tr><th scope="row">13:00, lenticular sheet at its hottest</th><td>631&nbsp;W/m²</td><td>32.3&nbsp;°C</td><td>44.5&nbsp;°C</td><td>47.1&nbsp;°C</td></tr>
+      <tr><th scope="row">16:30, air at its hottest</th><td>106 and 139&nbsp;W/m² per side</td><td>35.0&nbsp;°C</td><td>39.0&nbsp;°C</td><td>39.9&nbsp;°C</td></tr>
+      <tr><th scope="row">19:30, maximum on the sea side</th><td>512&nbsp;W/m²</td><td>32.9&nbsp;°C</td><td>42.1&nbsp;°C</td><td>44.1&nbsp;°C</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li><strong>The peak of sun and the peak of heat do not coincide.</strong> At 16:30 the sun is at azimuth 239°, almost in line with the sea wall (236°). It grazes both sides.</li>
+    <li><strong>The land side receives the most in September</strong> (820&nbsp;W/m², lower sun), but the air is cooler: 40&nbsp;°C at the lenticular sheet for 25&nbsp;°C air.</li>
+    <li><strong>The prevailing wind runs along the pane.</strong> It comes from the west (263°), only 27° from the plane of the pane, and sweeps both sides.</li>
+    <li><strong>In a heatwave the wind is often perpendicular</strong> (land wind or sea breeze): one side is sheltered. If its convective exchange is reduced by a third, the lenticular sheet gains 1&nbsp;K.</li>
+  </ul>
+</section>
+
+<section id="energie">
+  <h2>Absorbed solar energy: about 0.8&nbsp;kW estimated for the panel</h2>
+  <p>According to the calculation, more than half of the sunlight passes through the showcase and out again, and the lenticular sheet absorbs a third of the rest. Each layer \(k\) (front pane, lenticular sheet, rear pane) transmits, reflects and absorbs. The fluxes towards the rear \(F\) and towards the front \(B\) are calculated with multiple reflections:</p>
+  <div class="formule">\[F_k = \tau_k F_{k-1} + \rho_k B_k, \qquad B_{k-1} = \rho_k F_{k-1} + \tau_k B_k, \qquad F_0 = G, \quad B_3 = G_{arr}\]</div>
+  <div class="formule">\[S_k = \alpha_k \left( F_{k-1} + B_k \right)\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Flux (W/m²)</th><th scope="col">Site day, 13:00</th><th scope="col">Envelope case</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Sun on the front side \(G\)</th><td>631</td><td>800</td></tr>
+      <tr><th scope="row">Sun on the rear side \(G_{arr}\)</th><td>122</td><td>100</td></tr>
+      <tr><th scope="row">Absorbed by the front pane</th><td>86</td><td>105</td></tr>
+      <tr><th scope="row">Absorbed by the lenticular sheet</th><td>66</td><td>79</td></tr>
+      <tr><th scope="row">Absorbed by the rear pane</th><td>62</td><td>72</td></tr>
+      <tr><th scope="row">Total absorbed</th><td>214</td><td>255</td></tr>
+      <tr><th scope="row">Power absorbed by the 3.6&nbsp;m²</th><td>769&nbsp;W</td><td>919&nbsp;W</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>With a dark printed image, the lenticular sheet would absorb about 590&nbsp;W/m² instead of 79. It is this case, seven times more heavily loaded, that leads to the 80&nbsp;°C put forward: the concern is justified for a printed lenticular sheet. The assumption adopted here is an unprinted lenticular sheet.</p>
+</section>
+
+<section id="temperatures">
+  <h2>Calculated temperatures: 40 to 52&nbsp;°C depending on the case</h2>
+  <figure class="large">
+    <div id="g-temp" class="graphe"></div>
+    <figcaption>Temperature of the lenticular sheet at the top of the panel. Site day: maximum of the day on 20 July. Envelope case: 800&nbsp;W/m² and 35&nbsp;°C at the same time. Air inlets of B at 20% of the cross-section.</figcaption>
+  </figure>
+  <h3>Steady-state balance</h3>
+  <p>Each layer receives its absorbed flux \(S\) and exchanges it with its neighbours. On each outer face, convection by the wind \(v\) and radiation to the surroundings (temperatures in kelvin):</p>
+  <div class="formule">\[q_{ext} = h_c \,(T_s - T_a) + \varepsilon \sigma \left( T_s^4 - T_a^4 \right), \qquad h_c = 4 + 4v\]</div>
+  <p>Between the lenticular sheet and each pane, conduction in the air of thickness \(\delta\) and radiation in parallel:</p>
+  <div class="formule">\[h_{air} = \frac{\lambda_{air}}{\delta} + h_r, \qquad h_r = \frac{4 \sigma T_m^3}{\dfrac{1}{\varepsilon_1} + \dfrac{1}{\varepsilon_2} - 1} \approx 6.5 \ \mathrm{W/m^2K}\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Thermal resistance</th><th scope="col">Calculation</th><th scope="col">m²·K/W</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Glass 44.2</th><td>0.008 / 1.0 + 0.00076 / 0.20</td><td>0.012</td></tr>
+      <tr><th scope="row">Lenticular sheet, PMMA 3&nbsp;mm</th><td>0.003 / 0.19</td><td>0.016</td></tr>
+      <tr><th scope="row">A: air film of 0.15&nbsp;mm</th><td>1 / (0.0271 / 0.00015 + 6.5)</td><td>0.005</td></tr>
+      <tr><th scope="row">B: still air gap of 10&nbsp;mm</th><td>1 / (0.0271 / 0.010 + 6.5)</td><td>0.109</td></tr>
+      <tr><th scope="row">Outer face, no wind</th><td>1 / (4 + 6.3)</td><td>0.097</td></tr>
+      <tr><th scope="row">Outer face, 4&nbsp;m/s wind</th><td>1 / (20 + 6.3)</td><td>0.038</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>In this model, the 10&nbsp;mm air gap insulates twenty times more than the contact film. In A, the dominant resistance is that of the outer faces, which the wind divides by 2.5.</p>
+  <p>Hand check for A in the envelope case, no wind, with all the heat leaving through the two faces:</p>
+  <div class="formule">\[\Delta T \approx \frac{S_{total}}{2\,(h_c + h_r)} = \frac{255}{2 \times (4 + 6.3)} = 12.4 \ \mathrm{K} \;\Rightarrow\; T \approx 47 \ ^\circ\mathrm{C}\]</div>
+  <p>The full model gives 49&nbsp;°C at the lenticular sheet, with the panes at 48&nbsp;°C. Estimated accuracy: ±&nbsp;3&nbsp;K.</p>
+  <h3>Thermal inertia and sensitivity</h3>
+  <p>The panel weighs 157&nbsp;kg (144&nbsp;kg of glass, 13&nbsp;kg of PMMA) and stores 123&nbsp;kJ/K. Its time constant is 30&nbsp;min with no wind and 11&nbsp;min at 4&nbsp;m/s: equilibrium is reached in less than an hour, so inertia is not enough to flatten the peak.</p>
+  <p>If the lenticular sheet absorbed 20% of the sunlight (dirt, yellowing, tinted film), it would reach 54&nbsp;°C in A and 59&nbsp;°C in B in the envelope case. At 40%, 62&nbsp;°C in A and 72&nbsp;°C in B. An air clearance of 1&nbsp;mm per side in A costs 1&nbsp;K.</p>
+</section>
+
+<section id="ventilation">
+  <h2>Natural ventilation: share of heat removed estimated at 5–8%</h2>
+  <p>In a 10&nbsp;mm gap, the calculated stack effect moves 9 to 14&nbsp;m³/h. The air takes on the temperature of the walls within the first 15 centimetres, then rises without removing anything more.</p>
+  <p>The driving force is the density difference between the air in the gap and the outside air, helped or opposed by the wind:</p>
+  <div class="formule">\[\Delta p_{tirage} = \rho \, g \, H \, \frac{\bar{T}_{lame} - T_a}{\bar{T}_{lame}}, \qquad \Delta p_{vent} = \Delta C_p \, \frac{\rho v^2}{2}\]</div>
+  <p>It is used up by laminar friction between two planes a distance \(b\) apart and by the inlet and outlet openings, of relative cross-section \(\varphi\):</p>
+  <div class="formule">\[\Delta p_{frottement} = \frac{12 \, \mu \, H \, u}{b^2}, \qquad \Delta p_{orifices} = \frac{\rho u^2}{2} \left[ \frac{1}{(C_d \varphi_e)^2} + \frac{1}{(C_d \varphi_s)^2} \right]\]</div>
+  <p>Exchange between the air and the walls, and height after which the air is saturated with heat:</p>
+  <div class="formule">\[h_{lame} = \frac{Nu \, \lambda_{air}}{2b} = \frac{7.54 \times 0.0271}{0.020} = 10.2 \ \mathrm{W/m^2K}, \qquad z^* = \frac{\rho \, u \, b \, c_p}{2 \, h_{lame}} \approx 5.5 \ \mathrm{cm}\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Envelope case, H = 1.8&nbsp;m, b = 10&nbsp;mm, inlets at 20% of the cross-section</th><th scope="col">No wind</th><th scope="col">4&nbsp;m/s wind</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Thermal stack effect available</th><td>0.7 to 0.85&nbsp;Pa</td><td>0.4 to 0.5&nbsp;Pa</td></tr>
+      <tr><th scope="row">Air velocity in the gap</th><td>0.09 to 0.10&nbsp;m/s</td><td>0.06 to 0.07&nbsp;m/s</td></tr>
+      <tr><th scope="row">Total flow rate of the two gaps</th><td>12 to 14&nbsp;m³/h</td><td>8 to 9&nbsp;m³/h</td></tr>
+      <tr><th scope="row">Heat carried away by the air</th><td>13 to 19&nbsp;W/m²</td><td>4 to 6&nbsp;W/m²</td></tr>
+      <tr><th scope="row">Reynolds number</th><td>120, laminar</td><td>80, laminar</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>With slots open across the full width, the velocity rises to 0.14–0.17&nbsp;m/s and the temperature at the top of the panel does not change. If the wind adds a pressure difference (\(\Delta C_p = 0.3\) at 4&nbsp;m/s), the flow rate reaches 30&nbsp;m³/h, still with no effect on the maximum temperature. In this calculation, the wind cools the panel mainly through its outer faces.</p>
+</section>
+
+<section id="rosee">
+  <h2>Dew point: threshold calculated between 76 and 94% humidity</h2>
+  <p>On a clear night, the calculation gives a glass 1 to 4&nbsp;K colder than the air. In B, dew can then also form on the inside, on the lens side. In A, the desiccant is there to prevent it.</p>
+  <figure class="large">
+    <div id="g-rosee" class="graphe"></div>
+    <figcaption>Relative humidity above which the glass falls below the dew point, on a clear night, for a vertical face.</figcaption>
+  </figure>
+  <h3>Dew point</h3>
+  <p>Magnus formula, \(T\) in °C, relative humidity \(HR\) between 0 and 1:</p>
+  <div class="formule">\[p_{sat}(T) = 611.2 \, \exp\!\left( \frac{17.62 \, T}{243.12 + T} \right) \ \mathrm{Pa}\]</div>
+  <div class="formule">\[T_r = \frac{243.12 \, \gamma}{17.62 - \gamma}, \qquad \gamma = \ln(HR) + \frac{17.62 \, T}{243.12 + T}\]</div>
+  <p>At 15&nbsp;°C and 90% humidity, the dew point is 13.4&nbsp;°C: the glass only needs to be 1.6&nbsp;K colder than the air.</p>
+  <h3>Glass temperature at night</h3>
+  <p>A vertical face sees half sky and half ground. It loses by radiation to the clear sky what the air and the ground give back to it (temperatures in kelvin, \(T_r\) in °C in the sky emissivity):</p>
+  <div class="formule">\[h_c \,(T_a - T_s) + \tfrac{1}{2} \varepsilon \sigma \left( T_a^4 - T_s^4 \right) = \tfrac{1}{2} \varepsilon \sigma \left( T_s^4 - T_{ciel}^4 \right)\]</div>
+  <div class="formule">\[T_{ciel} = T_a \, \varepsilon_{ciel}^{1/4}, \qquad \varepsilon_{ciel} = 0.711 + 0.56 \, \frac{T_r}{100} + 0.73 \left( \frac{T_r}{100} \right)^2\]</div>
+  <p>On a night at 15&nbsp;°C and 85% humidity, the clear sky radiates like a body at −1&nbsp;°C. The glass drops to 11.0&nbsp;°C with no wind and to 13.6&nbsp;°C at 4&nbsp;m/s.</p>
+  <h3>Consequences for each design</h3>
+  <ul>
+    <li><strong>Outer faces:</strong> same dew in A and in B. It dries in the morning and can be cleaned off.</li>
+    <li><strong>B, inner faces:</strong> the cavity air is outside air and the panes are as cold inside as outside. Dew settles facing the lenses. Mist and sea spray enter through the openings.</li>
+    <li><strong>A, sealed cavity:</strong> the desiccant holds the internal dew point well below 0&nbsp;°C. No condensation as long as it is not saturated.</li>
+    <li><strong>A, shower on a hot panel:</strong> if the sheet has not been dried (equilibrium at 50% humidity), the air in the film at 45&nbsp;°C has a dew point of 32&nbsp;°C. A pane suddenly cooled to 20&nbsp;°C may fog for a few minutes. Sheet dried to 10%: dew point 6&nbsp;°C, no risk.</li>
+  </ul>
+</section>
+
+<section id="dessiccant">
+  <h2>Moisture: water estimated in the plastic and through the seal</h2>
+  <p>The enclosed air contains only 0.02&nbsp;g of water. The plastic would contain about 77&nbsp;g, and the seal would let through 1 to 24&nbsp;g per year depending on the sealant. In this estimate, it is the choice of seal that weighs most on service life.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Reservoir</th><th scope="col">Calculation</th><th scope="col">Water</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Enclosed air (films + frame)</th><td>2.1&nbsp;L at 20&nbsp;°C and 50% humidity, i.e. 8.6&nbsp;g/m³</td><td>0.02&nbsp;g</td></tr>
+      <tr><th scope="row">PMMA sheet in equilibrium with a workshop at 50%</th><td>12.9&nbsp;kg × 0.6% (typical content, to be confirmed)</td><td>77&nbsp;g</td></tr>
+      <tr><th scope="row">Saturated PMMA sheet</th><td>12.9&nbsp;kg × 2.1%</td><td>270&nbsp;g</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>Drying time of the centre of the sheet by the desiccant in the frame</h3>
+  <p>The vapour has to diffuse over 0.9&nbsp;m in an air film of 0.15&nbsp;mm, while the sheet contains 29,000 times more water than this film. Characteristic time:</p>
+  <div class="formule">\[\tau = \frac{4 L^2 R}{\pi^2 D_v} = \frac{4 \times 0.9^2 \times 29{,}000}{\pi^2 \times 2.5 \cdot 10^{-5}} \approx 3.8 \cdot 10^{8} \ \mathrm{s} \approx 12 \ \mathrm{years}\]</div>
+  <p>On this timescale, it is better to dry the sheet before assembly. Through its 3&nbsp;mm, via both faces, \(\tau = e^2 / (\pi^2 D)\) is about 3&nbsp;weeks at 23&nbsp;°C and 2&nbsp;days at 60&nbsp;°C. The diffusion coefficients of water in PMMA (5·10⁻¹³ and 5·10⁻¹²&nbsp;m²/s) are orders of magnitude, to be validated with the manufacturer of the lenticular sheet.</p>
+  <h3>Permeation through the edge seal</h3>
+  <p>Annual flux for a seal 7.6&nbsp;m long, 4&nbsp;mm high and 10&nbsp;mm deep:</p>
+  <div class="formule">\[\dot{m} = P \cdot A_j \cdot \frac{e_{ref}}{d} \cdot \frac{p_{v,site}}{p_{v,essai}} \cdot 365\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Sealant</th><th scope="col">Permeability \(P\) (g/m²·day)</th><th scope="col">Water ingress (g/year)</th><th scope="col">Life of 500&nbsp;g of 3A molecular sieve</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Butyl (PIB)</th><td>1 to 1.5</td><td>0.9 to 1.4</td><td>More than 60&nbsp;years</td></tr>
+      <tr><th scope="row">Polyurethane</th><td>3 to 4</td><td>2.8 to 3.8</td><td>24 to 33&nbsp;years</td></tr>
+      <tr><th scope="row">Polysulfide</th><td>4 to 10</td><td>3.8 to 9.5</td><td>10 to 24&nbsp;years</td></tr>
+      <tr><th scope="row">Silicone</th><td>15 to 25</td><td>14 to 24</td><td>4 to 7&nbsp;years</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Assumptions: permeabilities measured on a 2&nbsp;mm film, mean climate of 11&nbsp;°C and 82% humidity (to be confirmed against the RMI (Belgian met office) climate normals). The 3A molecular sieve retains 18.5% of its mass, i.e. 92&nbsp;g of water for 500&nbsp;g. An EPDM gasket compressed dry is not a barrier: it lets air through.</p>
+  <h3>Breathing</h3>
+  <p>A cavity that heats up by 25&nbsp;K wants to expand by 8.5%:</p>
+  <div class="formule">\[\Delta V = V \, \frac{\Delta T}{T}, \qquad \Delta p = p \, \frac{\Delta T}{T} \ \text{if the volume is fixed}\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Cavity</th><th scope="col">Air volume</th><th scope="col">Exchange per 25&nbsp;K cycle</th><th scope="col">Water drawn in if it breathes</th><th scope="col">Load if it is sealed and rigid</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">A: contact films</th><td>2.1&nbsp;L</td><td>0.18&nbsp;L</td><td>0.7&nbsp;g/year</td><td>Negligible: the panes deflect by 0.03&nbsp;mm</td></tr>
+      <tr><th scope="row">Closed gaps of 2&nbsp;×&nbsp;10&nbsp;mm</th><td>72&nbsp;L</td><td>6.1&nbsp;L</td><td>24&nbsp;g/year</td><td>8.6&nbsp;kPa, i.e. 31&nbsp;kN on the glazing</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>According to these orders of magnitude, the thin cavity can be closed without significant stress or moisture pumping. A closed 10&nbsp;mm space would combine the drawbacks of both designs.</p>
+</section>
+
+<section id="uv">
+  <h2>UV balance: less than 1% transmitted, according to the laminated glass data sheets</h2>
+  <p>A laminated glass 44.2 is made of two 4&nbsp;mm panes bonded by a 0.76&nbsp;mm PVB interlayer. It is this interlayer that acts as the UV-blocking film. Low-iron glass on its own lets 86% through.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Glazing</th><th scope="col">Light transmission</th><th scope="col">UV transmission (280–380&nbsp;nm, EN&nbsp;410)</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Low-iron monolithic 4&nbsp;mm (AGC Planibel Clearvision)</th><td>92%</td><td>86%</td></tr>
+      <tr><th scope="row">Low-iron laminated 44.2 (AGC Stratobel Clearvision)</th><td>91%</td><td>0%</td></tr>
+      <tr><th scope="row">Clear laminated 44.2 (Saint-Gobain Stadip Protect), for comparison</th><td>89%</td><td>0.7%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>How much UV the sun delivers</h3>
+  <p>UV accounts for 4.6% of solar energy at ground level: 46&nbsp;W/m² out of 1,000 in the ASTM&nbsp;G173 reference spectrum, of which 32 between 280 and 380&nbsp;nm and 14 between 380 and 400&nbsp;nm.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Side</th><th scope="col">Peak sun</th><th scope="col">Peak UV</th><th scope="col">Annual sun (estimate)</th><th scope="col">Annual incident UV</th><th scope="col">UV 280–380&nbsp;nm transmitted to the lenticular sheet</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Land (south-east)</th><td>684&nbsp;W/m²</td><td>32&nbsp;W/m²</td><td>≈&nbsp;900&nbsp;kWh/m²</td><td>≈&nbsp;41&nbsp;kWh/m²</td><td>less than 0.2&nbsp;kWh/m²</td></tr>
+      <tr><th scope="row">Sea (north-west)</th><td>512&nbsp;W/m²</td><td>24&nbsp;W/m²</td><td>≈&nbsp;400&nbsp;kWh/m²</td><td>≈&nbsp;18&nbsp;kWh/m²</td><td>less than 0.1&nbsp;kWh/m²</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>The annual totals are orders of magnitude derived from the calculated clear sky (1,630 and 490&nbsp;kWh/m²) and a cloudiness coefficient. They are to be confirmed on PVGIS. The last column applies the less favourable transmission of the two data sheets (0.7%).</p>
+  <h3>Summary</h3>
+  <ul>
+    <li><strong>Both sides are protected,</strong> since both panes are laminated. The edges are covered by the frame.</li>
+    <li><strong>The heat balance does not change.</strong> The UV that is stopped becomes heat in the interlayer. It is already counted in the 11% absorption of the glass, derived from the measured solar factor.</li>
+    <li><strong>The 380 to 400&nbsp;nm band is not quantified in the data sheets.</strong> It accounts for 30% of the UV energy. Kuraray states that a standard PVB stops almost everything up to about 400&nbsp;nm. The glass supplier should be asked for the spectral curve of its interlayer.</li>
+    <li><strong>An interlayer with a guaranteed cut-off exists</strong> if the curve is not sufficient (Trosifol UV Extra Protect, advertised as stopping all UV). Its thermal effect is negligible: less than 1% additional absorption.</li>
+    <li><strong>What is at stake depends on the material.</strong> A standard PMMA itself absorbs UV and resists yellowing well. PETG or polystyrene is more sensitive to it (general assessment, to be checked on the data sheet of the lenticular sheet).</li>
+  </ul>
+</section>
+
+<section id="sel">
+  <h2>Sea salt: estimate of what passes through a ventilated cavity</h2>
+  <p>The ventilated cavity would see 90,000 to 260,000&nbsp;m³ of sea air pass through per year, i.e. 1 to 13&nbsp;g of salt. The share that settles cannot be calculated here, but the lens side cannot be cleaned without dismantling.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Quantity</th><th scope="col">Value</th><th scope="col">Origin</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Air flow rate in the two gaps</th><td>10 to 30&nbsp;m³/h</td><td>Stack effect and wind</td></tr>
+      <tr><th scope="row">Annual volume</th><td>90,000 to 260,000&nbsp;m³</td><td>Flow rate × 8,760&nbsp;h</td></tr>
+      <tr><th scope="row">Airborne salt on the seafront</th><td>10 to 50&nbsp;µg/m³</td><td>Order of magnitude, approximate</td></tr>
+      <tr><th scope="row">Salt passing through the cavity</th><td>1 to 13&nbsp;g/year</td><td>Product of the two previous rows</td></tr>
+      <tr><th scope="row">Exposed internal surface</th><td>14.4&nbsp;m²</td><td>4 faces of 3.6&nbsp;m²</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li>Sodium chloride becomes liquid above 75% humidity (quoted from memory, approximate). On the coast, a salt deposit therefore stays damp most nights, then leaves marks as it dries.</li>
+    <li>An opening large enough to ventilate also lets in the sand blown along the surface of the sea wall, and sea spray.</li>
+    <li>Salt or dust that builds up increases solar absorption, and B is more sensitive to this than A.</li>
+  </ul>
+</section>
+
+<section id="dilatation">
+  <h2>Thermal expansion: calculated difference of ±&nbsp;3.7&nbsp;mm over 2&nbsp;m</h2>
+  <p>PMMA expands eight times more than glass. Between −10&nbsp;°C and +50&nbsp;°C, the calculated difference reaches ±&nbsp;3.7&nbsp;mm over 2&nbsp;m. In this evaluation, it is a more severe design constraint than temperature.</p>
+  <div class="formule">\[\Delta L = \alpha \, L \, \Delta T\]</div>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Deviation from the assembly temperature (20&nbsp;°C)</th><th scope="col">PMMA, over 2&nbsp;m</th><th scope="col">Glass, over 2&nbsp;m</th><th scope="col">Differential</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">+30&nbsp;K (panel at 50&nbsp;°C)</th><td>+4.2&nbsp;mm</td><td>+0.5&nbsp;mm</td><td>+3.7&nbsp;mm</td></tr>
+      <tr><th scope="row">−30&nbsp;K (night at −10&nbsp;°C)</th><td>−4.2&nbsp;mm</td><td>−0.5&nbsp;mm</td><td>−3.7&nbsp;mm</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li>The sheet must be hung from the top and free elsewhere, with at least 5&nbsp;mm of clearance on each edge. Clamped or bonded, it risks buckling and degrading the lenticular effect.</li>
+    <li>In winter, a perfectly sealed cavity goes into negative pressure (up to 10&nbsp;kPa for −30&nbsp;K). The panes press against the sheet and hinder its contraction.</li>
+    <li>A capillary pressure-equalisation tube opening into the desiccant balances the pressure. It costs only 0.7&nbsp;g of water per year.</li>
+  </ul>
+</section>
+
+<section id="recommandation">
+  <h2>Preferred option at this stage: the sealed sandwich, to be validated by a mock-up</h2>
+  <p>If the evaluation is confirmed, the sandwich would be built like an insulating glass unit with a very thin gap. The conditions below follow from the preceding calculations.</p>
+  <ol class="etapes">
+    <li><strong>Edge seal with butyl (PIB) barrier,</strong> backed by a retaining sealant. Neither silicone alone nor a dry EPDM gasket.</li>
+    <li><strong>3A molecular sieve,</strong> at least 500&nbsp;g distributed in the frame, preferably in a replaceable cartridge. Silica gel loses capacity when heated and is less suitable.</li>
+    <li><strong>Oven pre-drying of the sheet before assembly,</strong> of the order of 48&nbsp;h at 60&nbsp;°C, and assembly in a dry workshop.</li>
+    <li><strong>Sheet hung from the top, free elsewhere,</strong> 5&nbsp;mm of clearance per edge, air films as thin as possible.</li>
+    <li><strong>Capillary pressure-equalisation tube,</strong> opening into the desiccant.</li>
+    <li><strong>Low-iron laminated glass 44.2 on both sides,</strong> with the UV curve of the interlayer provided by the glass supplier.</li>
+    <li><strong>Mock-up of 50&nbsp;×&nbsp;50&nbsp;cm</strong> with a temperature and humidity probe, exposed on site for one month, before starting fabrication.</li>
+  </ol>
+  <h3>Assumptions to be confirmed, which may change the figures</h3>
+  <ul class="a-confirmer">
+    <li>Exact material and thickness of the lenticular sheet. PETG or polystyrene withstands heat less well than PMMA.</li>
+    <li>Exact azimuth of the sea wall at the location of the artwork (56° assumed).</li>
+    <li>Reference of the 44.2 glass, its EN&nbsp;410 values and the spectral curve of its interlayer.</li>
+    <li>Frame detail: type of seal, location and mass of the desiccant.</li>
+    <li>RMI humidity and wind normals for the coast, and annual solar irradiation on PVGIS.</li>
+    <li>Focal length of the lenses: check that it remains of the order of the sheet thickness, to rule out any concentration of sunlight at a distance.</li>
+  </ul>
+</section>
+
+<section id="conclusion">
+  <h2>Conclusion: what the calculation evaluates, and what remains to be measured</h2>
+  <p>The same method is applied to three cases. The temperatures are those of the lenticular sheet, with no wind, for the site day at 35&nbsp;°C and then for the envelope case.</p>
+  <div class="defile">
+  <table class="conclusion">
+    <thead>
+      <tr><th scope="col">Item evaluated</th><th scope="col" class="col-a">A. Sealed sandwich</th><th scope="col" class="col-b">B. Ventilated air gaps</th><th scope="col">Benchmark</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Transparent lenticular sheet, unprinted (project assumption)</th><td>45 to 49&nbsp;°C</td><td>47 to 52&nbsp;°C</td><td>Continuous service temperature of extruded PMMA: 70&nbsp;°C</td></tr>
+      <tr><th scope="row">Soiled or tinted lenticular sheet (20% absorption)</th><td>48 to 54&nbsp;°C</td><td>up to 59&nbsp;°C</td><td>Heat deflection temperature (HDT): 95 to 100&nbsp;°C</td></tr>
+      <tr><th scope="row">Printed lenticular sheet, dark image (90% absorption)</th><td>70 to 79&nbsp;°C</td><td>89 to 100&nbsp;°C; 94 to 105&nbsp;°C if the gap is closed</td><td>Vicat softening temperature: 103&nbsp;°C</td></tr>
+      <tr><th scope="row">Estimated model uncertainty</th><td>±&nbsp;3&nbsp;K</td><td>±&nbsp;3&nbsp;K</td><td>Steady state, clear sky, no wind</td></tr>
+      <tr><th scope="row">Humidity in the cavity</th><td>Set by the desiccant, as long as the seal holds</td><td>That of the sea air: dew expected on clear nights</td><td>Calculated dew threshold: 76 to 94% humidity</td></tr>
+      <tr><th scope="row">What the calculation does not settle</th><td>Durability of the seal over time, actual water content of the sheet</td><td>Share of the salt that settles, actual flow rate depending on the openings</td><td>Exact material of the lenticular sheet</td></tr>
+      <tr><th scope="row">Measurement that would settle it</th><td colspan="2">Mock-up of 50&nbsp;×&nbsp;50&nbsp;cm exposed on site, with temperature and humidity probes, in both configurations</td><td>One summer month</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li><strong>On the fear of melting.</strong> The calculation reproduces it for a dark printed lenticular sheet: 70 to 105&nbsp;°C depending on the assembly, i.e. beyond the continuous service temperature and close to softening. For an unprinted lenticular sheet, it gives 45 to 52&nbsp;°C, i.e. about twenty kelvin below the continuous service temperature.</li>
+    <li><strong>On the choice between A and B.</strong> The estimated temperature difference is 2 to 3&nbsp;K, of the same order as the uncertainty. The difference lies mainly in humidity, salt and maintenance.</li>
+    <li><strong>On the scope of the evaluation.</strong> Everything rests on three assumptions: no ink, 3&nbsp;mm PMMA, low-iron 44.2 panes. If one of them changes, the scripts in the repository allow the calculation to be redone with other data.</li>
+  </ul>
+</section>
+
+<section id="donnees">
+  <h2>Appendix: physical data and sources</h2>
+  <p>Base assumption: lenticular sheet in transparent extruded PMMA, 3&nbsp;mm, unprinted, between two panes of low-iron laminated glass 44.2.</p>
+  <div class="defile">
+  <table>
+    <thead><tr><th scope="col">Quantity</th><th scope="col">Value</th><th scope="col">Source</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Glass: conductivity \(\lambda\)</th><td>1.0&nbsp;W/m·K</td><td>EN&nbsp;572-1 (usual normative value)</td></tr>
+      <tr><th scope="row">Glass: density, specific heat</th><td>2,500&nbsp;kg/m³; 720&nbsp;J/kg·K</td><td>EN&nbsp;572-1 (usual normative value)</td></tr>
+      <tr><th scope="row">Glass: emissivity, thermal expansion</th><td>0.837; 9·10⁻⁶&nbsp;K⁻¹</td><td>EN&nbsp;673, EN&nbsp;572-1 (usual values)</td></tr>
+      <tr><th scope="row">PVB interlayer 0.76&nbsp;mm: \(\lambda\)</th><td>0.20&nbsp;W/m·K</td><td>Usual value, approximate</td></tr>
+      <tr><th scope="row">Low-iron 44.2: light transmission, solar factor \(g\), UV</th><td>91%; 0.84; 0%</td><td><a href="https://www.agc-yourglass.com/sites/default/files/brochures/original/POCKET%20FRANCE%202018.pdf">AGC, Pocket France 2018</a></td></tr>
+      <tr><th scope="row">Low-iron 44.2: energy transmission, reflection, absorption</th><td>0.81; 0.08; 0.11</td><td>Derived from \(g\) using the EN&nbsp;410 formula below</td></tr>
+      <tr><th scope="row">Extruded PMMA: \(\lambda\), density, specific heat</th><td>0.19&nbsp;W/m·K; 1,190&nbsp;kg/m³; 1,470&nbsp;J/kg·K</td><td><a href="https://www.voskunststoffen.nl/files/166151/datasheet%20plexiglas%20XT%20GS.pdf">PLEXIGLAS GS/XT data sheet</a></td></tr>
+      <tr><th scope="row">Extruded PMMA: thermal expansion</th><td>70·10⁻⁶&nbsp;K⁻¹</td><td>PLEXIGLAS GS/XT data sheet</td></tr>
+      <tr><th scope="row">Extruded PMMA: continuous service temperature; heat deflection temperature (HDT); Vicat</th><td>70&nbsp;°C; 95 to 100&nbsp;°C; 103&nbsp;°C</td><td>PLEXIGLAS GS/XT data sheet</td></tr>
+      <tr><th scope="row">PMMA 3&nbsp;mm: light transmission, total energy transmission \(g\)</th><td>92%; 0.85</td><td>PLEXIGLAS GS/XT data sheet</td></tr>
+      <tr><th scope="row">PMMA 3&nbsp;mm: energy absorption</th><td>0.10</td><td>Derived from \(g\) using the EN&nbsp;410 formula</td></tr>
+      <tr><th scope="row">PMMA: maximum water absorption</th><td>2.1% by mass</td><td>PLEXIGLAS GS/XT data sheet</td></tr>
+      <tr><th scope="row">Air at 40&nbsp;°C: \(\lambda\), \(\mu\), \(\rho\), \(c_p\)</th><td>0.0271&nbsp;W/m·K; 1.91·10⁻⁵&nbsp;Pa·s; 1.127&nbsp;kg/m³; 1,007&nbsp;J/kg·K</td><td>Standard tables</td></tr>
+      <tr><th scope="row">External convection as a function of wind</th><td>\(h = 4 + 4v\) (W/m²·K, \(v\) in m/s)</td><td>EN&nbsp;ISO&nbsp;6946 (usual normative value)</td></tr>
+      <tr><th scope="row">Mean wind at Ostend, at 10&nbsp;m</th><td>17&nbsp;km/h in July; 26&nbsp;km/h in January; prevailing westerly</td><td><a href="https://weatherspark.com/y/48792/Average-Weather-in-Ostend-Belgium-Year-Round">Weather Spark</a>, <a href="https://www.windfinder.com/windstatistics/oostende_pier">Windfinder</a></td></tr>
+      <tr><th scope="row">Wind at 2&nbsp;m height</th><td>0.8 × wind at 10&nbsp;m, i.e. 3.8&nbsp;m/s in July</td><td>Power law, exponent 0.14</td></tr>
+      <tr><th scope="row">Clear-sky sun on each side</th><td>See the orientation section</td><td>pvlib calculation, Ineichen model</td></tr>
+      <tr><th scope="row">Share of UV in sunlight</th><td>4.6% (280–400&nbsp;nm)</td><td>ASTM&nbsp;G173-03 spectrum, integrated numerically</td></tr>
+      <tr><th scope="row">Vapour permeability of sealants</th><td>1 to 25&nbsp;g/m²·day depending on the sealant</td><td><a href="https://sweets.construction.com/swts_content_files/324/830181.pdf">Dow, Insulating Glass Technical Manual</a></td></tr>
+      <tr><th scope="row">Capacity of the 3A molecular sieve</th><td>18.5% of its mass</td><td><a href="https://oker-chemie.de/wp-content/uploads/2025/09/PI_SIO-12_MS-3A-engl.pdf">Oker-Chemie</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Absorption derived from the solar factor (EN&nbsp;410, exchange coefficients 8 and 23&nbsp;W/m²·K):</p>
+  <div class="formule">\[g = \tau_e + \alpha_e \, \frac{h_i}{h_i + h_e}, \qquad \tau_e + \rho_e + \alpha_e = 1 \;\Rightarrow\; \alpha_e = \frac{1 - \rho_e - g}{1 - \dfrac{h_i}{h_i + h_e}}\]</div>
+  <p>Check of the method on a clear 44.2 whose data sheet gives everything: transmission 75.8%, reflection 7.1%, hence a calculated \(g\) of 0.802 against 0.80 stated (<a href="https://static.coteverre.fr/document/stadip-protect-44.2-verre-feuillete-cote-verre.pdf">Stadip Protect 44.2</a>).</p>
+  <h3>Other pages consulted on 9 October 2026</h3>
+  <ul>
+    <li><a href="https://nrel.gov/docs/fy11osti/47706.pdf">NREL, moisture ingress in edge seals</a>: PIB is the best barrier, silicone the worst.</li>
+    <li><a href="https://www.sorbentsystems.com/desiccants_charts.html">Sorbent Systems</a>: temperature resistance of desiccants.</li>
+    <li><a href="https://www.glassonline.com/trosifol-uv-exploits-the-entire-spectrum-of-sunlight/">Glass Online, Trosifol UV</a>: standard PVB stops almost all UV up to about 400&nbsp;nm.</li>
+    <li><a href="https://www.trosifol.com/applications-products/products/trosifol-uv-extra-protect">Kuraray, Trosifol UV Extra Protect</a>: enhanced UV-blocking interlayer.</li>
+  </ul>
+  <p>Cited from memory, not reopened: EN&nbsp;572-1, EN&nbsp;673, EN&nbsp;410, EN&nbsp;ISO&nbsp;6946, Magnus formula (WMO), clear-sky emissivity of Berdahl and Martin (1984). Their values should be treated as approximate until they have been cross-checked.</p>
+  <p>The calculation scripts (nodal balance, marching along the air gap, sun per side, dew point) are in the <code>calcul/</code> folder of the repository.</p>
+</section>
+
+</article>
+</div>
+</main>
+
+<footer class="pied">
+  <p>Calculation note drawn up on 9 October 2026 for the lenticular showcase of Les Veilleurs. It is an evaluation by calculation, in steady state, with an estimated accuracy of ±&nbsp;3&nbsp;K. It is to be confirmed by an instrumented mock-up before fabrication.</p>
+</footer>
+
+<div id="bulle" class="bulle" role="status" hidden></div>
+
+<script defer src="/assets/katex/katex.min.js"></script>
+<script defer src="/assets/katex/auto-render.min.js"></script>
+<script defer src="/assets/app.js"></script>
+</body>
+</html>
